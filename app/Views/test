@@ -1,0 +1,257 @@
+public function register(){
+
+
+$data = [];
+helper(['form']);
+
+if ($this->request->getMethod() == 'post') {
+//let's do the validation here
+$rules = [
+'username' => 'required|min_length[3]max_length[20]',
+'fullname' => 'required|min_length[3]max_length[30]',
+'email' => 'required|min_length[6]max_length[50]|valid_email|is_unique[users.email]',
+'password' => 'required|min_length[8]max_length[255]',
+'password_confirm' => 'matches[password]',
+];
+
+if(! $this->validate($rules)){
+$data['validation']= $this->validator;
+} else{
+$model = new UserModel();
+$newData = [
+'username' => $this->request->getVar('username'),
+'fullname' => $this->request->getVar('fullname'),
+'email' => $this->request->getVar('email'),
+'password' => $this->request->getVar('password'),
+];
+$model->save($newData);
+$session = session();
+$session->setFlashdata('sucess','sucessful Registration');
+return redirect()->to('/login');
+
+}
+
+}
+
+
+echo view('templates/header', $data);
+echo view('register', $data);
+echo view('templates/footer', $data);
+}
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+    <div class="row">
+      <div class="col-12 col-sm8-offset-sm-2 col-md-6 offset-md-3 mt-5 pt-3 pb-3 bg-white from-wrapper">
+      <div class="container">
+        <h3>Register</h3>
+        <hr>
+        <form class="" action="/register" method="post">
+          <div class="row">
+            <div class="col-12 col-sm-6">
+              <div class="form-group">
+                <label for="username">User Name</label>
+                <input type="text" class="form-control" name="username" id="username" value="<?= set_value('username') ?>">
+                </div>
+                </div>
+              <div class="col-12 col-sm-6">
+              <div class="form-group">
+                <label for="fullname">Full Name</label>
+                <input type="text" class="form-control" name="fullname" id="fullname" value="<?= set_value('fullname') ?>">
+                </div>
+               </div>
+                 <div class="col-12">
+                 <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="text" class="form-control" name="email" id="email" value="<?= set_value('email') ?>">
+                </div>
+                </div>
+                <div class="col-12 col-sm-6">
+               <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" name="password" id="password" value="">
+              </div>
+              </div>
+              <div class="col-12 col-sm-6">
+               <div class="form-group">
+                <label for="password_confirm">Confirm Password</label>
+                <input type="password" class="form-control" name="password_confirm" id="password_confirm" value="">
+              </div>
+              </div>
+              <?php if (isset($validation)): ?>
+                <div class="col-12">
+                  <div class="alert alert-danger" role="alert">
+                    <?= $validation->listErrors() ?>
+              </div>
+              </div>
+                <?php endif; ?>
+              </div>
+
+         <div class="row">
+            <div class="col-12 col-sm-4">
+                <button type="submit" class="btn btn-primary">Register</button>
+               
+          </div>
+          <div class="col-12 col-sm-8 text-right">
+            <a href="/login">Already have an account</a>
+         </div>
+        </div>
+       </form>
+     </div>
+   </div>
+  </div>
+</div>
+
+
+<?php namespace App\Models;
+
+use codeIgniter\Model;
+
+class UserModel extends Model{
+    protected $table = 'users';
+    protected $allowedFields = ['username','fullname','email','password','updated_at'];
+    protected $beforeInsert = ['beforeInsert'];
+    protected $beforeUpdate = ['beforeUpdate'];
+
+
+
+
+
+    protected function beforeInsert(array $data){
+    $data = $this->passwordHash($data);
+
+
+
+      return $data;
+    }
+
+    protected function beforeUpdate(array $data){
+        $data = $this->passwordHash($data);
+
+        return $data;
+    }
+
+    protected function passwordHash(array $data){
+        if(isset($data['data']['password']))
+
+        $data['data']['password'] = password_hash($data['$data']['password'], PASSWORD_DEFAULT);
+        return $data;
+    }
+}
+
+
+$rules = [
+  'username' => 'required|min_length[3min 50max]',
+  'fullname' => 'required|min_length[3min 50max]',
+  'email' => 'required|min_length[6min 50max]|valid_email|is_unique[users.email]',
+  'password' => 'required|min_length[8min 255max]',
+  'password_confirm' => 'matches[password]',
+  ];
+
+
+
+  <!DOCTYPE html>
+<html>
+<head>
+	<title>Dashboard</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<style>
+		body {
+			background-color: #f2f2f2;
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+		
+		.header {
+			background-color: #007bff;
+			padding: 20px;
+		}
+		
+		h1 {
+			color: #fff;
+			text-align: center;
+			margin: 0;
+		}
+		
+		.footer {
+			background-color: #555;
+			padding: 10px 0;
+			color: #fff;
+			text-align: center;
+			position: fixed;
+			bottom: 0;
+			width: 100%;
+		}
+		
+		.link-container {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			margin-top: 30px;
+			column-count: 3; /* Set number of columns here */
+			column-gap: 20px; /* Set gap between columns here */
+		}
+		
+		.link-container a {
+			background-color: #007bff;
+			border: none;
+			color: white;
+			padding: 10px 20px;
+			text-align: center;
+			text-decoration: none;
+			display: block;
+			font-size: 16px;
+			margin: 10px;
+			cursor: pointer;
+			border-radius: 5px;
+			transition: all 0.2s ease-in-out;
+		}
+		
+		.link-container a:hover {
+			background-color: #0069d9;
+			transform: translateY(-3px);
+			box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+		}
+	</style>
+</head>
+
+
+<body>
+	<div class="header">
+		<h1>Welcome to the Dashboard!</h1>
+	</div>
+	
+	<div class="container">
+		<p>Click on the links below to go to any of the pages:</p>
+		<div class="link-container">
+			
+			<a href="/cropvarieties">Crop Varieties</a>
+			<a href="/processedfoods">Processed Foods</a>
+			<a href="/othertechnologies">Other Technologies</a>
+			<a href="/agroinput">Agro Inputs</a>
+			<a href="/marketabletechnologies">List of Marketable Products</a>
+		</div>
+	</div>
+	
+
+	<div class="footer">
+		<p>Copyright © 2023 Dashboard.
+	</div>
+
+	<!-- Bootstrap JS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html> 
