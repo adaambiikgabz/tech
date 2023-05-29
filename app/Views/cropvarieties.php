@@ -6,92 +6,87 @@
                 <h4>Crop Varieties</h4>
                 <hr>
 
-                <form class="" action="/" method="post">
+                <form class="" action="/cropvarieties" method="post">
                     <div class="form-group">
-                        <label for="technology-name">Technology name</label>
+                        <label for="Technology">Technology</label>
                         <div class="input-group">
-                            <input type="text" class="form-control" name="technology-name" id="technology-name" value="">
+                            <input type="text" class="form-control" name="Technology" id="Technology" value="">
                             <div class="input-group-append">
-                                <select class="form-control" name="category">
-                                    <option value="">Select Category</option>
-                                    <option value="category-1">Maize</option>
-                                    <option value="category-2">Rice</option>
-                                    <option value="category-3">Cowpea</option>
-                                    <option value="category-3">Millet</option>
+                                <select class="form-control" name="Categories">
+                                    <option value="">Categories</option>
+                                    <option value="Maize">Maize</option>
+                                    <option value="Rice">Rice</option>
+                                    <option value="Cowpea">Cowpea</option>
+                                    <option value="Millet">Millet</option>
                                 </select>
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group">
-    <label for="other-categories">Other </label>
-    <div class="input-group">
-        <input type="text" class="form-control" name="other-categories" id="other-categories" value="">
-        <div class="input-group-append">
-            <select class="form-control" name="other-tech-category">
-                <option value="">Select Institution</option>
-                <option value="category-1">Water Research Institution</option>
-                <option value="category-2">Soil Research Institution </option>
-                <option value="category-3">Animal Research Institution</option>
-            </select>
-        </div>
-    </div>
-</div>
+                        <label for="Year">Year</label>
+                        <input type="text" class="form-control" name="Year" id="Year" value="">
+                    </div>
 
 
                     <div class="form-group">
-                        <label for="description">Description</label>
-                        <input type="text" class="form-control" name="description" id="description" value="">
+                        <label for="Attributes">Attributes</label>
+                        <input type="text" class="form-control" name="Attributes" id="Attributes" value="">
                     </div>
 
                     <div class="form-group">
-                        <label for="atributes">Atributes</label>
-                        <input type="text" class="form-control" name="description" id="atributes" value="">
+                        <label for="Seedcolour">Seedcolour</label>
+                        <input type="text" class="form-control" name="Seedcolour" id="Seedcolour" value="">
                     </div>
 
                     <div class="form-group">
-                        <label for="seed colour">seed colour</label>
-                        <input type="text" class="form-control" name="seed colour" id="seed colour" value="">
+                        <label for="Maturity_in_days">Maturity_in_days</label>
+                        <input type="text" class="form-control" name="Maturity_in_days" id="Maturity_in_days" value="">
+                    </div>
+
+                 
+
+                    <div class="form-group">
+                        <label for="Potential_yield">Potential_yield</label>
+                        <input type="text" class="form-control" name="Potential_yield" id="Potential_yield" value="">
                     </div>
 
                     <div class="form-group">
-                        <label for="maturity in days">Maturity in days</label>
-                        <input type="text" class="form-control" name="maturity in days" id="maturity in days" value="">
+                        <label for="Applicability">Applicability</label>
+                        <input type="text" class="form-control" name="Applicability" id="Applicability" value="">
                     </div>
 
                     <div class="form-group">
-                        <label for="websiteFax">websiteFax</label>
-                        <input type="text" class="form-control" name="websiteFax" id="websiteFax" value="">
+                        <label for="Benefits">Benefits</label>
+                        <input type="text" class="form-control" name="Benefits" id="Benefits" value="">
                     </div>
 
                     <div class="form-group">
-                        <label for="Potential_yield_per_ha">Potential_yield_per_ha </label>
-                        <input type="text" class="form-control" name="Potential_yield_per_ha" id="Potential_yield_per_ha" value="">
+                        <label for="Contact">Contact</label>
+                        <input type="Contact" class="form-control" name="Contact" id="Contact" value="">
                     </div>
 
                     <div class="form-group">
-                        <label for="telephone">telephone</label>
-                        <input type="telephone" class="form-control" name="telephone" id="telephone" value="">
+                        <label for="Telephone">Telephone</label>
+                        <input type="Contact" class="form-control" name="Telephone" id="Telephone" value="">
                     </div>
 
-                    <div class="form-group">
-                        <label for="year">Year</label>
-                        <input type="year" class="form-control" name="description" id="year" value="">
-                    </div>
+                   
+
+                   
 
                     <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control" name="email" id="email" value="">
+                        <label for="Email">Email</label>
+                        <input type="Email" class="form-control" name="Email" id="Email" value="">
                     </div>
 
-                    <div class="form-group">
-                        <label for="description">Benefits</label>
-                        <input type="text" class="form-control" name="description" id="description" value="">
-                    </div>
+                   
+
+                  
 
                     <div class="form-group">
-                        <label for="description">Applicability</label>
-                        <input type="text" class="form-control" name="description" id="description" value="">
+                        <label for="WebsiteFax">WebsiteFax</label>
+                        <input type="text" class="form-control" name="WebsiteFax" id="WebsiteFax" value="">
                     </div>
 
                     <div class="form-group">

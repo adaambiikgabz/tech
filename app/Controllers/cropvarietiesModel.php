@@ -10,6 +10,8 @@ class Cropvarieties extends BaseController
 
             $data = [];
 
+            
+
 
             echo view('templates/header', $data);
             echo view('cropvarities');

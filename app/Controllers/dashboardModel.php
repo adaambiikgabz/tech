@@ -10,9 +10,7 @@ class Dashboard extends BaseController
         {
 
             $data = [];
-            $users=new UserModel();
-           $test = $users->getAll();
-echo($test);
+ 
 
             echo view('templates/header', $data);
             echo view('dashboard');

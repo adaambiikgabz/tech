@@ -11,7 +11,7 @@ $routes = Services::routes();
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('Home');
+$routes->setDefaultController('Users');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
@@ -30,17 +30,23 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Users::index');
-$routes->get('/login', 'Users::login');
 $routes->get('/dashboard', 'Users::dashboard');
-$routes->get('/cropvarieties', 'Users::cropvarieties');
-$routes->get('/agroinput', 'Users::agroinput');
-$routes->get('/marketabletechnologies', 'Users::marketabletechnologies');
-$routes->get('/othertechnologies', 'Users::othertechnologies');
-$routes->get('/processedfoods', 'Users::processedfoods');
+$routes->match(['get','post'],'cropvarieties', 'Users::cropvarieties');
+$routes->match(['get','post'],'agroinput', 'Users::agroinput');
+$routes->match(['get','post'],'marketabletechnologies', 'Users::marketabletechnologies');
+$routes->match(['get','post'],'othertechnologies', 'Users::othertechnologies');
+$routes->match(['get','post'],'processedfoods', 'Users::processedfoods');
 $routes->match(['get','post'],'register', 'Users::register');
-$routes->get('/welcome_message', 'Users::welcome_message');
 $routes->match(['get','post'],'login', 'Users::login');
-$routes->get('/search', 'Users::search');
+$routes->match(['get','post'],'about', 'Users::about');
+$routes->match(['get','post'],'faq', 'Users::faq');
+$routes->match(['get','post'],'contact', 'Users::contact');
+$routes->match(['get','post'],'mainagroinputs', 'Users::mainagroinputs');
+$routes->match(['get','post'],'maincropvarieties', 'Users::maincropvarieties');
+$routes->match(['get','post'],'mainmarketable', 'Users::mainmarketable');
+$routes->match(['get','post'],'mainothertechnologies', 'Users::mainothertechnologies');
+$routes->match(['get','post'],'mainprocessedfoods', 'Users::mainprocessedfoods');
+
 
 /*
  * --------------------------------------------------------------------

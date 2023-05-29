@@ -12,7 +12,7 @@ class agroinput extends BaseController
 
 
             echo view('templates/header', $data);
-            echo view('agroinput');
+            echo view('marketabletechnologies');
             echo view('templates/footer');
 
 

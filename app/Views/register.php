@@ -22,7 +22,7 @@
                  <div class="col-12">
                  <div class="form-group">
                 <label for="email">Email address</label>
-                <input type="text" class="form-control" name="email" id="email" value="<?= set_value('email') ?>">
+                <input type="email" class="form-control" name="email" id="email" value="<?= set_value('email') ?>">
                 </div>
                 </div>
                 <div class="col-12 col-sm-6">
