@@ -30,7 +30,7 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Users::index');
-$routes->get('/dashboard', 'Users::dashboard');
+$routes->get('dashboard', 'Users::dashboard', ['as' => 'dashboard']);
 $routes->match(['get','post'],'cropvarieties', 'Users::cropvarieties');
 $routes->match(['get','post'],'agroinput', 'Users::agroinput');
 $routes->match(['get','post'],'marketabletechnologies', 'Users::marketabletechnologies');
@@ -46,6 +46,12 @@ $routes->match(['get','post'],'maincropvarieties', 'Users::maincropvarieties');
 $routes->match(['get','post'],'mainmarketable', 'Users::mainmarketable');
 $routes->match(['get','post'],'mainothertechnologies', 'Users::mainothertechnologies');
 $routes->match(['get','post'],'mainprocessedfoods', 'Users::mainprocessedfoods');
+$routes->match(['get','post'],'search', 'Users::search');
+// $routes->get('/Search', 'Users::Search');
+ 
+
+
+
 
 
 /*

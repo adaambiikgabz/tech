@@ -1,31 +1,51 @@
-<?php namespace App\Controllers;
+<?php
+
+namespace App\Controllers;
+
 use CodeIgniter\Database\RawSql;
-
-
-
-
+use CodeIgniter\Controller;
+use App\Models\SearchModel;
 use App\Models\UserModel;
 
 class Users extends BaseController
 {
+    protected $UserModel;
+    protected $searchModel;
+
+    public function __construct()
+    {
+        $this->UserModel = new UserModel();
+        $this->searchModel = new SearchModel();
+    }
 
     public function index()
     {
-        $data ['pageTittle']= 'Home';
+        $data['pageTittle'] = 'Home';
 
         return view('home', $data);
-        // helper(['form']);
+    }
 
     
-       
-        // echo view('templates/header', $data);
-        // echo view('home', $data);
-        // echo view('templates/footer', $data);
-        // // echo view('templates/styles', $data);
-        // // echo view('templates/script', $data);
-        
+
+    public function search()
+    {
+        // Retrieve search query
+        $searchQuery = $this->request->getVar('query');
+
+        // Perform search operation using the search query
+        $searchResults = $this->searchModel->searchMultipleTables($searchQuery);
+
+        // Pass search results to the view
+        $data['searchResults'] = $searchResults;
+
+        // Load the search view and pass the data
+        return view('search', $data);
+    }
+
     
-}       
+
+
+
 
 
 
@@ -36,11 +56,12 @@ class Users extends BaseController
         $data = [];
         helper(['form']);
 
-      
+        $url = route_to('dashboard');
     
         
         // echo view('templates/header', $data);
-        echo view('dashboard', $data);
+        return view('dashboard', ['url' => $url]);
+        // echo view('dashboard', $data);
         // echo view('templates/footer', $data);
     }
 
@@ -425,7 +446,8 @@ class Users extends BaseController
     
                 $session = session();
                  $session->setFlashdata('success','Successfully Logged In');
-                return redirect()->to('/dashboard');
+                 return redirect()->to(route_to('dashboard'));
+
             }
       
         }
@@ -495,7 +517,19 @@ class Users extends BaseController
         echo view('templates/header', $data);
         echo view('register', $data);
         echo view('templates/footer', $data);
+
+        
     }
+
+
+   
+    
+    
+    
+    
+    
+
+    
     
 }
  

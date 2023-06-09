@@ -1,97 +1,200 @@
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Dashboard</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-	<style>
-		body {
-			background-color: #f2f2f2;
-			font-family: Arial, sans-serif;
-			margin: 0;
-			padding: 0;
-		}
-		
-		.header {
-			background-color: #007bff;
-			padding: 20px;
-		}
-		
-		h1 {
-			color: #fff;
-			text-align: center;
-			margin: 0;
-		}
-		
-		.footer {
-			background-color: #555;
-			padding: 10px 0;
-			color: #fff;
-			text-align: center;
-			position: fixed;
-			bottom: 0;
-			width: 100%;
-		}
-		
-		.link-container {
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: center;
-			margin-top: 30px;
-			column-count: 3; /* Set number of columns here */
-			column-gap: 20px; /* Set gap between columns here */
-		}
-		
-		.link-container a {
-			background-color: #007bff;
-			border: none;
-			color: white;
-			padding: 10px 20px;
-			text-align: center;
-			text-decoration: none;
-			display: block;
-			font-size: 16px;
-			margin: 10px;
-			cursor: pointer;
-			border-radius: 5px;
-			transition: all 0.2s ease-in-out;
-		}
-		
-		.link-container a:hover {
-			background-color: #0069d9;
-			transform: translateY(-3px);
-			box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
-		}
-	</style>
-</head>
+protected $CropvarietiesModel;
+ 
+ public function search()
+ {
+     $searchQuery = $this->request->getVar('search_query');
+     // var_dump($searchQuery);
+ 
+     $this-> CropvarietiesModel = new CropvarietiesModel();
+ 
+     
+ 
+     
+     $searchResults = $this->CropvarietiesModel->searchCropVarieties($searchQuery);
+ ($searchResults);
+     
+     $formattedResults = [];
+     foreach ($searchResults as $result) {
+         $formattedResults[] = [
+             'Technology' => $result['Technology'],
+             'Category' => $result['Categories'],
+             'Year' => $result['Year'],
+             'Attribute' => $result['Attributes'],
+             'Seedcolour' => $result['seedcolour'],
+             'Maturity in days' => $result['Maturity_in_days'],
+             'Potential Yeild per Year' => $result['Potential_yield'],
+             'Applicability' => $result['Applicability'],
+             'Benefits' => $result['Benefits']
+             
+         ];
+     }
+
+     <?php if (!empty($searchResults)) : ?>
+  <table>
+    <thead>
+      <tr>
+        <th>Technology</th>
+        <th>Category</th>
+        <th>Year</th>
+        <th>Attrribute</th>
+        <th>Seedcolour</th>
+        <th>Maturity in days</th>
+        <th>Potential Yeild per Year</th>
+        <th>Applicability</th>
+        <th>Benefits</th>
+        
+        <!-- Add other relevant table headers -->
+      </tr>
+    </thead>
+    <tbody>
+      <?php foreach ($searchResults as $result) : ?>
+        <tr>
+          <td><?= $result['Technology'] ?></td>
+          <td><?= $result['Categories'] ?></td>
+          <td><?= $result['Year'] ?></td>
+          <td><?= $result['Attributes'] ?></td>
+          <td><?= $result['Seedcolour'] ?></td>
+          <td><?= $result['Maturity_in_days'] ?></td>
+          <td><?= $result['Potential_yield'] ?></td>
+          <td><?= $result['Applicability'] ?></td>
+          <td><?= $result['Benefits'] ?></td>
+          <!-- Display other relevant information about the user -->
+        </tr>
+      <?php endforeach; ?>
+    </tbody>
+  </table>
+<?php else : ?>
+  <p> Sorry No results found.</p>
+<?php endif; ?>
+ 
+     
+     $data['searchResults'] = $formattedResults;
+     return view('search_results', $data);
+ }
 
 
-<body>
-	<div class="header">
-		<h1>Welcome <?=session()->get('user name') ?> </h1>
-	</div>
-	
-	<div class="container">
-		<p>Click on the links below to go to any of the pages:</p>
-		<div class="link-container">
-			
-			<a href="/cropvarieties">Crop Varieties</a>
-			<a href="/processedfoods">Processed Foods</a>
-			<a href="/othertechnologies">Other Technologies</a>
-			<a href="/agroinput">Agro Inputs</a>
-			<a href="/marketabletechnologies">List of Marketable Products</a>
-		</div>
-	</div>
-	
 
-	<div class="footer">
-		<p>Copyright © 2023 Dashboard.
-	</div>
 
-	<!-- Bootstrap JS -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html> 
+
+ <?php
+
+namespace App\Models;
+
+use CodeIgniter\Model;
+
+class CropvarietiesModel extends Model {
+    protected $table = 'null';
+    protected $primaryKey = 'Categories';
+    protected $allowedFields = ['Categories', 'Technology', 'Year', 'Attributes', 'Seedcolour','Maturity_in_days','Potential_yield','Applicability','Benefits','Contact','Telephone','Email','WebsiteFax'];
+
+    public function searchCropVarieties($searchQuery) {
+        $query = $this->like('Categories', $searchQuery)
+                      ->get();
+
+        if ($query) {
+            return $query->getResultArray();
+        } else {
+            return [];
+        }
+    }
+}
+
+
+<h2 class="mb-5">Search Results</h2>
+<?php if (isset($searchResults) && !empty($searchResults)) : ?>
+<table>
+<thead>
+<tr>
+<th>Technology</th>
+<th>Category</th>
+<th>Year</th>
+<th>Attribute</th>
+<th>Seed Color</th>
+<th>Maturity in Days</th>
+<th>Potential Yield per Year</th>
+<th>Applicability</th>
+<th>Benefits</th>
+<!-- Add other relevant table headers -->
+</tr>
+</thead>
+<tbody>
+<?php foreach ($searchResults as $result) : ?>
+<tr>
+<td><?= isset($result['Technology']) ? $result['Technology'] : '' ?></td>
+<td><?= isset($result['Categories']) ? $result['Categories'] : '' ?></td>
+<td><?= isset($result['Year']) ? $result['Year'] : '' ?></td>
+<td><?= isset($result['Attributes']) ? $result['Attributes'] : '' ?></td>
+<td><?= isset($result['Seedcolour']) ? $result['Seedcolour'] : '' ?></td>
+<td><?= isset($result['Maturity_in_days']) ? $result['Maturity_in_days'] : '' ?></td>
+<td><?= isset($result['Potential_yield']) ? $result['Potential_yield'] : '' ?></td>
+<td><?= isset($result['Applicability']) ? $result['Applicability'] : '' ?></td>
+<td><?= isset($result['Benefits']) ? $result['Benefits'] : '' ?></td>
+<!-- Display other relevant information about the user -->
+</tr>
+<?php endforeach; ?>
+</tbody>
+</table>
+<?php else : ?>
+<p>Sorry, no results found.</p>
+<?php endif; ?>
+
+
+
+
+
+<h2 class="mb-5">Search Results</h2>
+
+<?php
+if (isset($searchResults) && !empty($searchResults)) {
+    // echo '<pre>';
+    // var_dump($searchResults);
+    // echo '</pre>';
+}
+?>
+
+<?php if (isset($searchResults) && !empty($searchResults)) : ?>
+  <table>
+    <thead>
+      <tr>
+        <th>Technology</th>
+        <th>Categories</th>
+        <th>Year</th>
+        <th>Attribute</th>
+        <th>SeedColor</th>
+        <th>Maturity_in_Days</th>
+        <th>Potential_Yield</th>
+        <th>Applicability</th>
+        <th>Benefits</th>
+        <th>Contact</th>
+        <th>Telephone</th>
+        <th>Email</th>
+        <th>WebsiteFax</th>
+        <!-- Add other relevant table headers -->
+      </tr>
+    </thead>
+    <tbody>
+      <?php foreach ($searchResults as $result) : ?>
+        <tr>
+          <?php var_dump($result); ?>
+          <td><?= isset($result['Technology']) ? $result['Technology'] : '' ?></td>
+          <td><?= isset($result['Categories']) ? $result['Categories'] : '' ?></td>
+          <td><?= isset($result['Year']) ? $result['Year'] : '' ?></td>
+          <td><?= isset($result['Attributes']) ? $result['Attributes'] : '' ?></td>
+          <td><?= isset($result['Seedcolour']) ? $result['Seedcolour'] : '' ?></td>
+          <td><?= isset($result['Maturity_in_days']) ? $result['Maturity_in_days'] : '' ?></td>
+          <td><?= isset($result['Potential_yield']) ? $result['Potential_yield'] : '' ?></td>
+          <td><?= isset($result['Applicability']) ? $result['Applicability'] : '' ?></td>
+          <td><?= isset($result['Benefits']) ? $result['Benefits'] : '' ?></td>
+          <td><?= isset($result['Contact']) ? $result['Contact'] : '' ?></td>
+          <td><?= isset($result['Telephone']) ? $result['Telephone'] : '' ?></td>
+          <td><?= isset($result['Email']) ? $result['Email'] : '' ?></td>
+          <td><?= isset($result['WebsiteFax']) ? $result['WebsiteFax'] : '' ?></td>
+          <!-- Display other relevant information about the user -->
+        </tr>
+      <?php endforeach; ?>
+    </tbody>
+  </table>
+<?php else : ?>
+  <p>Sorry, no results found.</p>
+<?php endif; ?>

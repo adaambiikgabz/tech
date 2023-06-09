@@ -8,7 +8,7 @@ use Config\Database;
 class UserModel extends Model{
     protected $table = 'users';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['username','fullname','email','password',];
+    protected $allowedFields = ['Categories','fullname','email','password',];
     protected $beforeInsert = ['beforeInsert'];
     protected $beforeUpdate = ['beforeUpdate'];
 
@@ -116,4 +116,10 @@ public function insertAgroInputs($data)
     return $builder->insert($data);
 }
 
+
+
 }
+
+
+
+

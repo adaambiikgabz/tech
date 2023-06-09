@@ -68,13 +68,21 @@
 					<h1 class="text-white mb-3">CSIR TECHNOLOGIES</h1>
 					<p class="text-white mb-4">Find advice and answers from  our Research Scientist  or get in touch</p>
 					<div class="position-relative">
-						<input id="search" class="form-control" placeholder="Have a question? Just ask here "><i
-							class="ti-search search-icon"></i>
+
+					
+	<form method="get" action="<?=base_url('/search') ?>">
+		<input id="search" class="form-control" placeholder="Have a question? Just ask here" name="search_query" type="text">
+		<button type="submit"class="ti-search search-icon"> </button>
+		
+	</form>
+
+
 					</div>
 				</div>
 			</div>
 		</div>
 		<!-- /banner -->
+
 	</header>
 	<!-- /header -->
 

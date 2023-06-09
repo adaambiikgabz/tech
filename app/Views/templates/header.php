@@ -16,12 +16,12 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/login" style="display: inline-block; padding: 0.5rem 1rem; background-color: #007bff; color: #fff; border-radius: 0.25rem; text-decoration: none;">Login</a>
+            <!-- <a class="nav-link" href="/login" style="display: inline-block; padding: 0.5rem 1rem; background-color: #007bff; color: #fff; border-radius: 0.25rem; text-decoration: none;">Login</a> -->
           </li>
           
           
           <li class="nav-item">
-            <a class="nav-link" href="/register" style="display: inline-block; padding: 0.5rem 1rem; background-color: #007bff; color: #fff; border-radius: 0.25rem; text-decoration: none;">Register</a>
+            <!-- <a class="nav-link" href="/register" style="display: inline-block; padding: 0.5rem 1rem; background-color: #007bff; color: #fff; border-radius: 0.25rem; text-decoration: none;">Register</a> -->
           </li>
         </ul>
       </div>
