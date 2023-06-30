@@ -37,6 +37,7 @@ class Users extends BaseController
 
         // Pass search results to the view
         $data['searchResults'] = $searchResults;
+         
 
         // Load the search view and pass the data
         return view('search', $data);
@@ -266,6 +267,25 @@ class Users extends BaseController
      
      
         return view('maincropvarieties', $data); 
+    
+        
+        // echo view('templates/header', $data);
+        // echo view('', $data);
+        // echo view('templates/footer', $data);
+    }
+
+      public function info()
+
+
+    {
+        $data = [];
+        helper(['form']);
+       
+
+          
+     
+     
+        return view('info', $data); 
     
         
         // echo view('templates/header', $data);

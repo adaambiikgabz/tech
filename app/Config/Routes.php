@@ -40,6 +40,8 @@ $routes->match(['get','post'],'register', 'Users::register');
 $routes->match(['get','post'],'login', 'Users::login');
 $routes->match(['get','post'],'about', 'Users::about');
 $routes->match(['get','post'],'faq', 'Users::faq');
+$routes->match(['get','post'],'info', 'Users::info');
+$routes->match(['get', 'post'], 'info/(:segment)', 'Users::info/$1');
 $routes->match(['get','post'],'contact', 'Users::contact');
 $routes->match(['get','post'],'mainagroinputs', 'Users::mainagroinputs');
 $routes->match(['get','post'],'maincropvarieties', 'Users::maincropvarieties');

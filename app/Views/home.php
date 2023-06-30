@@ -33,7 +33,8 @@
 	
 
 		<nav class="navbar navbar-expand-md navbar-dark">
-			<img src="images/csirlogo.png" alt="CSIR Logo">
+			<img src="images/csirlogo.png" alt="CSIR Logo" style="width: 120px; height: auto;">
+
 			<div class="container">
 				<a class="navbar-brand px-2" href="index.html"></a>
 				<button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation"
@@ -54,9 +55,16 @@
 						</li>
 						<li class="nav-item">
 							<a class="nav-link text-dark" href="/about">ABOUT</a>
+
+							
 						</li>
+
+						
 					</ul>
+
+					
 				</div>
+				
 			</div>
 		</nav>
 		<!-- banner -->
@@ -68,23 +76,52 @@
 					<h1 class="text-white mb-3">CSIR TECHNOLOGIES</h1>
 					<p class="text-white mb-4">Find advice and answers from  our Research Scientist  or get in touch</p>
 					<div class="position-relative">
+						<form method="get" action="/search">
+  <div class="wrapper">
+    <div class="search_box">
+      <div class="dropdown">
+        <!--<div class="default_option">All</div>
+        <ul>-->
+          <!--<li>All</li>
+          <li>Crop Variety</li>
+          <li>Agro Inputs</li>
+          <li>Marketable Tech</li>
+          <li>Processed Foods</li>
+          <li>Other Tech</li>
+        </ul>-->
+      </div>
+      <div class="search_field">
+        <input type="text" class="input" placeholder="Search" name="query">
+        <button type="submit"><i class="fas fa-search"></i></button>
+      </div>
+    </div>
+  </div>
+</form>
 
-					
-	<form method="get" action="<?=base_url('/search') ?>">
-		<input id="search" class="form-control" placeholder="Have a question? Just ask here" name="search_query" type="text">
-		<button type="submit"class="ti-search search-icon"> </button>
-		
-	</form>
+					<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+
+	
 
 
-					</div>
+
+
+
 				</div>
 			</div>
 		</div>
 		<!-- /banner -->
 
+		
+		
+
 	</header>
 	<!-- /header -->
+	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+
+
+
+
+<script src="assets/script.js"></script>
 
 	<!-- topics -->
 	<section class="section">
@@ -92,6 +129,8 @@
 			<div class="row justify-content-center">
 				<div class="col-12 text-center">
 					<h2 class="section-title">Find your answer by subject</h2>
+
+					
 
 <link rel="stylesheet" href="<?= base_url('assets/styles.css') ?>">
 				</div>
