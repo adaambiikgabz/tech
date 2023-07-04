@@ -23,9 +23,10 @@
 <body>
   <!-- header -->
   <header class="shadow-bottom sticky-top bg-white">
-    <nav class="navbar navbar-expand-md navbar-light">
-    <img src="images/csirlogo.png" alt="CSIR Logo">
-      <div class="container">
+  <nav class="navbar navbar-expand-md navbar-dark">
+  <a class="navbar-brand" href="/">
+    <img src="images/csirlogo.png" alt="CSIR Logo" style="width: 120px; height: auto;">
+  </a>
       
         <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation"
           aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,9 +44,7 @@
             <li class="nav-item">
               <a class="nav-link text-dark" href="/contact">contact</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link text-dark" href="/about">About</a>
-            </li>
+          
           </ul>
         </div>
       </div>

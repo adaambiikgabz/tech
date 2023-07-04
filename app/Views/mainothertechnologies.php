@@ -25,9 +25,10 @@
  
   <header class="shadow-bottom sticky-top bg-white">
   
-    <nav class="navbar navbar-expand-md navbar-light">
-    <img src="images/csirlogo.png" alt="CSIR Logo">
-      <div class="container">
+  <nav class="navbar navbar-expand-md navbar-dark">
+  <a class="navbar-brand" href="/">
+    <img src="images/csirlogo.png" alt="CSIR Logo" style="width: 120px; height: auto;">
+  </a>
       
       
 
@@ -47,9 +48,7 @@
             <li class="nav-item">
               <a class="nav-link text-dark" href="/contact">contact</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link text-dark" href="/about">About</a>
-            </li>
+         
           </ul>
         </div>
       </div>
@@ -57,121 +56,64 @@
   </header>
   <!-- /header -->
 
-        <!-- <div class="col-lg-9"> -->
           <div class="p-lg-5 p-4 bg-white">
-            <h2 class="mb-5">Other Technologies</h2>
-            <div class="content">
-            <h5 id="paragraph">Paragraph</h5>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam nihil enim maxime corporis cumque totam
-                aliquid nam sint inventore optio modi neque laborum officiis necessitatibus, facilis placeat pariatur!
-                Voluptatem, sed harum pariatur adipisci voluptates voluptatum cumque, porro sint minima similique magni
-                perferendis fuga! Optio vel ipsum excepturi tempore reiciendis id quidem? Vel in, doloribus debitis
-                nesciunt fugit sequi magnam accusantium modi neque quis, vitae velit, pariatur harum autem a! Velit
-                impedit atque maiores animi possimus asperiores natus repellendus excepturi sint architecto eligendi
-                non, omnis nihil. Facilis, doloremque illum. Fugit optio laborum minus debitis natus illo perspiciatis
-                corporis voluptatum rerum laboriosam.</p>
-              <hr>
-            <img src="images/fouth.jpg" alt="image" class="fouth-image">
-            <link rel="stylesheet" href="<?= base_url('assets/styles.css') ?>">
-
-              
-             
-              
-              <h5 id="paragraph">Paragraph</h5>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam nihil enim maxime corporis cumque totam
-                aliquid nam sint inventore optio modi neque laborum officiis necessitatibus, facilis placeat pariatur!
-                Voluptatem, sed harum pariatur adipisci voluptates voluptatum cumque, porro sint minima similique magni
-                perferendis fuga! Optio vel ipsum excepturi tempore reiciendis id quidem? Vel in, doloribus debitis
-                nesciunt fugit sequi magnam accusantium modi neque quis, vitae velit, pariatur harum autem a! Velit
-                impedit atque maiores animi possimus asperiores natus repellendus excepturi sint architecto eligendi
-                non, omnis nihil. Facilis, doloremque illum. Fugit optio laborum minus debitis natus illo perspiciatis
-                corporis voluptatum rerum laboriosam.</p>
-              <hr>
-              
-              
- 
- 
-         
-              <p>There must be at least 3 dashes separating each header cell.
-                The outer pipes (|) are optional, and you don&rsquo;t need to make the
-                raw Markdown line up prettily. You can also use inline Markdown.</p>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Technology</th>
-                    <th>Attribut</th>
-                    <th>Applicability</th>
-                    <th>Benefits</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><em>Soil pollution remediation (stopping environmental damage)</em></td>
-                    <td>Industrial waste Deforestation.Excessive use of Fertilisers Pesticides.Garbage pollution.</td>
 
 
 
 
-                    <td>Applicable for all polluted soils</td>
-                    <td>Removal of soil pollutants Restoration of soil productive capacity Conservation of soil biodiversity</td>
+          <h2 class="mb-5">Other Technologies</h2>
+           <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
 
 
-                  </tr>
-                  <tr>
-                    <td>Restoration of degraded agricultural lands</td>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 
-                    <td>Identification of degraded sites Characterization of soil degradation Deployment of restoration packages-use of green manure, cover crops,crop rotation and organic compost</td>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
 
+<script>
 
+$(document).ready( function () {
+    $('#example').DataTable();
+} );
 
-
-
-
-
-
-                    <td>Applicable in areas characterized by degraded agricultural lands</td>
+</script>
 
 
+         <table id="example" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>Technology</th>
+            <th>Year</th>
+            <th>Attributes</th>
+            <th>Applicability</th>
+            <th>Uses</th>
+            <th>Contact</th>
+            <th>Telephone</th>
+          
+           
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($otherdatas as $otherdata) : ?>
+            <tr>
+                <td><?php echo $otherdata->Technology; ?></td>
+                <td><?php echo $otherdata->Year; ?></td>
+                <td><?php echo $otherdata->Attributes; ?></td>
+                <td><?php echo $otherdata->Applicability; ?></td>
+                <td><?php echo $otherdata->Uses; ?></td>
+                <td><?php echo $otherdata->Contact; ?></td>
+                <td><?php echo $otherdata->Telephone; ?></td>
+                
+                
+               
+            </tr>
+        <?php endforeach; ?>
 
-                    <td>Regeneration of degraded agricultural lands Soil biodiversity improved Soil productive capacity improved</td>
+    </tbody>
+</table>
 
+      <link rel="stylesheet" href="<?= base_url('assets/styles.css') ?>">
 
-                  </tr>
-                </tbody>
-              </table>
-              <hr>
-              <h5 id="image">Image</h5>
-              <p>  <img src="images/second.jpg" alt="image" class="second-image"></p>
-              <h5 id="paragraph">Paragraph</h5>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam nihil enim maxime corporis cumque totam
-                aliquid nam sint inventore optio modi neque laborum officiis necessitatibus, facilis placeat pariatur!
-                Voluptatem, sed harum pariatur adipisci voluptates voluptatum cumque, porro sint minima similique magni
-                perferendis fuga! Optio vel ipsum excepturi tempore reiciendis id quidem? Vel in, doloribus debitis
-                nesciunt fugit sequi magnam accusantium modi neque quis, vitae velit, pariatur harum autem a! Velit
-                impedit atque maiores animi possimus asperiores natus repellendus excepturi sint architecto eligendi
-                non, omnis nihil. Facilis, doloremque illum. Fugit optio laborum minus debitis natus illo perspiciatis
-                corporis voluptatum rerum laboriosam.</p>
-              <hr>
-              <hr>
-              <h5 id="youtube-video">Youtube video</h5>
-
-              <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-                <iframe src="https://www.youtube.com/embed/C0DPdy98e4c"
-                  style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen
-                  title="YouTube Video"></iframe>
-              </div>
-            </div>
-            <p class="post-meta border-bottom pb-3 mb-0 mt-3"></p>
-            <nav class="pagination mt-3">
-              <a class="nav nav-prev" href="#"><i class="ti-arrow-left mr-2"></i> <span
-                  class="d-none d-md-block"></span></a>
-              <a class="nav nav-next" href="#"> <span class="d-none d-md-block"></span><i
-                  class="ti-arrow-right ml-2"></i></a>
-            </nav>
-          </div>
-        </div>
-      </div>
-    </div>
+       
   </section>
   <!-- /details page -->
 
@@ -199,15 +141,7 @@
   </footer>
   <!-- /footer -->
 
-  <!-- ** JS Plugins Needed for the Project ** -->
-  <!-- jquiry -->
-  <script src="plugins/jquery/jquery-1.12.4.js"></script>
-  <!-- Bootstrap JS -->
-  <script src="plugins/bootstrap/bootstrap.min.js"></script>
-  <!-- match-height JS -->
-  <script src="plugins/match-height/jquery.matchHeight-min.js"></script>
-  <!-- Main Script -->
-  <script src="assets/script.js"></script>
+
 </body>
 
 </html>

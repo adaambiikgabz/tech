@@ -116,7 +116,59 @@ public function insertAgroInputs($data)
     return $builder->insert($data);
 }
 
+public function getAllCrop()
+{
+   $db = db_connect();
+   $builder = $db->table('cropVarieties');
+   $query = $builder->get();
+   return $query->getResult();
+   $db->close();
 
+
+}
+
+public function getAllProcessed()
+{
+   $db = db_connect();
+   $builder = $db->table('processedFoods');
+   $query = $builder->get();
+   return $query->getResult();
+   $db->close();
+
+
+}
+
+public function getAllOther()
+{
+   $db = db_connect();
+   $builder = $db->table('otherTechnologies');
+   $query = $builder->get();
+   return $query->getResult();
+   $db->close();
+
+
+}
+
+public function getAllMarket()
+{
+   $db = db_connect();
+   $builder = $db->table('marketableTechnologies');
+   $query = $builder->get();
+   return $query->getResult();
+   $db->close();
+
+
+}
+
+public function getLogin($email)
+{
+    $db = db_connect();
+    $builder = $db->table('users');
+    $query = $builder->getWhere(['email' => $email]);
+    $result = $query->getRow();
+    
+    return $result;
+}
 
 }
 

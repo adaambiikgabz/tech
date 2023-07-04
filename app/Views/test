@@ -1,58 +1,4 @@
-
- <?php if (isset($searchResults) && !empty($searchResults)) : ?>
-
-<table id="myTable" class="myTableClass" style="width: 100%;">
-    <thead>
-      <tr>
-        <th>Technology</th>
-        <th>Categories</th>
-        <th>Year</th>
-        <th>Attribute</th>
-        <th>SeedColor</th>
-        <th>Maturity_in_Days</th>
-        <th>Potential_Yield</th>
-        <th>Applicability</th>
-        <th>Benefits</th>
-        <th>Contact</th>
-        <th>Telephone</th>
-        <th>Email</th>
-        <th>WebsiteFax</th>
-        <!-- Add other relevant table headers -->
-      </tr>
-    </thead>
-    <tbody>
-      <?php foreach ($searchResults as $result) : ?>
-        <tr>
-          <td><?php echo $result->Technology; ?></td>
-          <td><?php echo $result->Attributes; ?></td>
-          <td><?php echo $result->Year; ?></td>
-          <!-- Display other relevant information about the user -->
-        </tr>
-      <?php endforeach; ?>
-    </tbody>
-  </table>
-<?php else : ?>
-  <p>Sorry, no results found.</p>
-<?php endif; ?>
-
-
-<h2 class="mb-5">Search Results</h2>
-
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-
-<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
-
-<script>
-
-$(document).ready( function () {
-    $('#example').DataTable();
-} );
-
-</script>
-
-
+<?php
 
 
 
@@ -63,86 +9,47 @@ use CodeIgniter\Model;
 
 class SearchModel extends Model
 {
-    public function searchMultipleTables($keyword)
-    {  var_dump($keyword); 
-        $results = [];
+public function searchMultipleTables($keyword)
+{
+    $results = [];
 
-        // Search in cropVarieties table
-        $builder1 = $this->db->table('cropVarieties');
-        if ($keyword !== null) {
-            $builder1->groupStart()
-                ->like('Technology', $keyword)
-                ->orLike('Categories', $keyword)
-                ->orLike('Year', $keyword)
-                ->orLike('Attributes', $keyword)
-                ->orLike('Seedcolour', $keyword)
-                ->orLike('Maturity_in_days', $keyword)
-                ->orLike('Potential_yield', $keyword)
-                ->orLike('Applicability', $keyword)
-                ->orLike('Benefits', $keyword)
-                ->orLike('Contact', $keyword)
-                ->orLike('Telephone', $keyword)
-                ->orLike('Email', $keyword)
-                ->orLike('WebsiteFax', $keyword)
-                ->groupEnd();
-        }
-        $query1 = $builder1->get();
-        $results = $query1->getResult();
-
-        // Search in processedFoods table
-        //$builder2 = $this->db->table('processedFoods');
-        //if ($keyword !== null) {
-        //    $builder2->groupStart()
-        //        ->like('Technology', $keyword)
-        //        ->orLike('Year', $keyword)
-        //        ->orLike('Attributes', $keyword)
-        //        ->orLike('Applicability', $keyword)
-        //        ->orLike('Benefits', $keyword)
-        //        ->groupEnd();
-        //}
-        //$query2 = $builder2->get();
-        //$results = array_merge($results, $query2->getResult());
-
-        return $results;
+    // Search in cropVarieties table
+    $builder1 = $this->db->table('cropVarieties');
+    if ($keyword !== null) {
+        $builder1->groupStart()
+            ->like('Technology', $keyword)
+            ->orLike('Categories', $keyword)
+            ->orLike('Year', $keyword)
+            ->orLike('Attributes', $keyword)
+            ->orLike('Seedcolour', $keyword)
+            ->orLike('Maturity_in_days', $keyword)
+            ->orLike('Potential_yield', $keyword)
+            ->orLike('Applicability', $keyword)
+            ->orLike('Benefits', $keyword)
+            ->orLike('Contact', $keyword)
+            ->orLike('Telephone', $keyword)
+            ->orLike('Email', $keyword)
+            ->orLike('WebsiteFax', $keyword)
+            ->groupEnd();
     }
+    $query1 = $builder1->get();
+    $results = $query1->getResult();
+
+    // Search in processedFoods table
+    //$builder2 = $this->db->table('processedFoods');
+    //if ($keyword !== null) {
+    //    $builder2->groupStart()
+    //        ->like('Technology', $keyword)
+    //        ->orLike('Year', $keyword)
+    //        ->orLike('Attributes', $keyword)
+    //        ->orLike('Applicability', $keyword)
+    //        ->orLike('Benefits', $keyword)
+    //        ->groupEnd();
+    //}
+    //$query2 = $builder2->get();
+    //$results = array_merge($results, $query2->getResult());
+
+    return $results;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}

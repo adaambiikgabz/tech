@@ -20,12 +20,15 @@
   <link href="assets/style.css" rel="stylesheet" media="screen" />
 </head>
 
+   
+
 <body>
   <!-- header -->
   <header class="shadow-bottom sticky-top bg-white">
-    <nav class="navbar navbar-expand-md navbar-light">
-    <img src="images/csirlogo.png" alt="CSIR Logo">
-      <div class="container">
+  <nav class="navbar navbar-expand-md navbar-dark">
+  <a class="navbar-brand" href="/">
+    <img src="images/csirlogo.png" alt="CSIR Logo" style="width: 120px; height: auto;">
+  </a>
       
         <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation"
           aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,9 +46,7 @@
             <li class="nav-item">
               <a class="nav-link text-dark" href="/contact">contact</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link text-dark" href="/about">About</a>
-            </li>
+         
           </ul>
         </div>
       </div>
@@ -53,104 +54,73 @@
   </header>
   <!-- /header -->
 
-        <!-- <div class="col-lg-9"> -->
-          
+  
           <div class="p-lg-5 p-4 bg-white">
-            <h2 class="mb-5">Crop Varieties</h2>
-            <div class="content">
 
-            <h5 id="paragraph">Paragraph</h5>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam nihil enim maxime corporis cumque totam
-                aliquid nam sint inventore optio modi neque laborum officiis necessitatibus, facilis placeat pariatur!
-                Voluptatem, sed harum pariatur adipisci voluptates voluptatum cumque, porro sint minima similique magni
-                perferendis fuga! Optio vel ipsum excepturi tempore reiciendis id quidem? Vel in, doloribus debitis
-                nesciunt fugit sequi magnam accusantium modi neque quis, vitae velit, pariatur harum autem a! Velit
-                impedit atque maiores animi possimus asperiores natus repellendus excepturi sint architecto eligendi
-                non, omnis nihil. Facilis, doloremque illum. Fugit optio laborum minus debitis natus illo perspiciatis
-                corporis voluptatum rerum laboriosam.</p>
-              <hr>
-            <img src="images/third.jpg" alt="image" class="third-image">
-            <link rel="stylesheet" href="<?= base_url('assets/styles.css') ?>">
 
-              
-             
-              
-              <h5 id="paragraph">Paragraph</h5>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam nihil enim maxime corporis cumque totam
-                aliquid nam sint inventore optio modi neque laborum officiis necessitatibus, facilis placeat pariatur!
-                Voluptatem, sed harum pariatur adipisci voluptates voluptatum cumque, porro sint minima similique magni
-                perferendis fuga! Optio vel ipsum excepturi tempore reiciendis id quidem? Vel in, doloribus debitis
-                nesciunt fugit sequi magnam accusantium modi neque quis, vitae velit, pariatur harum autem a! Velit
-                impedit atque maiores animi possimus asperiores natus repellendus excepturi sint architecto eligendi
-                non, omnis nihil. Facilis, doloremque illum. Fugit optio laborum minus debitis natus illo perspiciatis
-                corporis voluptatum rerum laboriosam.</p>
-              <hr>
-              
-              
- 
- 
-         
-              <p>There must be at least 3 dashes separating each header cell.
-                The outer pipes (|) are optional, and you don&rsquo;t need to make the
-                raw Markdown line up prettily. You can also use inline Markdown.</p>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Technology</th>
-                    <th>Attribut</th>
-                    <th>Applicability</th>
-                    <th>Benefits</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><em>CSIR-Aburo sika</em></td>
-                    <td>High-yielding</td>
-                    <td>All ecologies in Ghana</td>
-                    <td>Industrial uses (Low fat; high crude protein)</td>
-                  </tr>
-                  <tr>
-                    <td>CSIR-Suhudoo</td>
-                    <td>Top-cross maize hybrid, Drought and Striga tolerant</td>
-                    <td>drought prone and Striga endemic areas of Ghana</td>
-                    <td>Suitable for human and poultry cunsumption, For breweries. For industrial uses</td>
-                  </tr>
-                </tbody>
-              </table>
-              <hr>
-              <h5 id="image">Image</h5>
-              <p>  <img src="images/fifth.jpeg" alt="image" class="fifth-image"></p>
-              <hr>
-              <h5 id="paragraph">Paragraph</h5>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam nihil enim maxime corporis cumque totam
-                aliquid nam sint inventore optio modi neque laborum officiis necessitatibus, facilis placeat pariatur!
-                Voluptatem, sed harum pariatur adipisci voluptates voluptatum cumque, porro sint minima similique magni
-                perferendis fuga! Optio vel ipsum excepturi tempore reiciendis id quidem? Vel in, doloribus debitis
-                nesciunt fugit sequi magnam accusantium modi neque quis, vitae velit, pariatur harum autem a! Velit
-                impedit atque maiores animi possimus asperiores natus repellendus excepturi sint architecto eligendi
-                non, omnis nihil. Facilis, doloremque illum. Fugit optio laborum minus debitis natus illo perspiciatis
-                corporis voluptatum rerum laboriosam.</p>
-              <h5 id="youtube-video">Youtube video</h5>
 
-              <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-                <iframe src="https://www.youtube.com/embed/C0DPdy98e4c"
-                  style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen
-                  title="YouTube Video"></iframe>
-              </div>
-            </div>
-            <p class="post-meta border-bottom pb-3 mb-0 mt-3"></p>
-            <nav class="pagination mt-3">
-              <a class="nav nav-prev" href="#"><i class="ti-arrow-left mr-2"></i> <span
-                  class="d-none d-md-block"></span></a>
-              <a class="nav nav-next" href="#"> <span class="d-none d-md-block"></span><i
-                  class="ti-arrow-right ml-2"></i></a>
-            </nav>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- /details page -->
+
+          <h2 class="mb-5">Crop Varieties</h2>
+           <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+
+<script>
+
+$(document).ready( function () {
+    $('#example').DataTable();
+} );
+
+</script>
+
+   
+
+
+         <table id="example" class="display" style="width:100%">
+          
+    <thead>
+        <tr>
+            <th>Technology</th>
+            <th>Categories</th>
+            <th>Year</th>
+            <th>Attributes</th>
+            <th>Seedcolor</th>
+            <th>Maturity_in_days</th>
+            <th>Potential_yield</th>
+            <th>Applicability</th>
+            <!--<th>Benefits</th>-->
+            <!--<th>Contact</th>
+            <th>Telephone</th>-->
+            <!--<th>Email</th>
+            <th>WebsiteFax</th>-->
+            <!-- Add other relevant table headers -->
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($cropdatas as $cropdata) : ?>
+            <tr>
+                <td><?php echo $cropdata->Technology; ?></td>
+                <td><?php echo $cropdata->Categories; ?></td>
+                <td><?php echo $cropdata->Year; ?></td>
+                <td><?php echo $cropdata->Attributes; ?></td>
+                <td><?php echo $cropdata->Seedcolour; ?></td>
+                <td><?php echo $cropdata->Maturity_in_days; ?></td>
+                <td><?php echo $cropdata->Potential_yield; ?></td>
+                <td><?php echo $cropdata->Applicability; ?></td>
+                
+               
+            </tr>
+        <?php endforeach; ?>
+
+    </tbody>
+</table>
+          <link rel="stylesheet" href="<?= base_url('assets/styles.css') ?>">
+
+     
+
 
   <!-- footer -->
   <footer class="section pb-4">
@@ -176,15 +146,6 @@
   </footer>
   <!-- /footer -->
 
-  <!-- ** JS Plugins Needed for the Project ** -->
-  <!-- jquiry -->
-  <script src="plugins/jquery/jquery-1.12.4.js"></script>
-  <!-- Bootstrap JS -->
-  <script src="plugins/bootstrap/bootstrap.min.js"></script>
-  <!-- match-height JS -->
-  <script src="plugins/match-height/jquery.matchHeight-min.js"></script>
-  <!-- Main Script -->
-  <script src="assets/script.js"></script>
-</body>
+
 
 </html>

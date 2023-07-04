@@ -23,13 +23,15 @@
 <body>
   <!-- header -->
   <header class="shadow-bottom sticky-top bg-white">
-    <nav class="navbar navbar-expand-md navbar-light">
+    <!--<nav class="navbar navbar-expand-md navbar-light">-->
+
+	<nav class="navbar navbar-expand-md navbar-dark">
+  <a class="navbar-brand" href="/">
+    <img src="images/csirlogo.png" alt="CSIR Logo" style="width: 120px; height: auto;">
+  </a>
       <div class="container">
-        <a class="navbar-brand px-2" href="index.html">Send Us a Message</a>
-        <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation"
-          aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+        <a class="navbar-brand px-2" href="index.html">Contact Us</a>
+       
 
         <div class="collapse navbar-collapse text-center" id="navigation">
           <ul class="navbar-nav ml-auto">
@@ -42,9 +44,7 @@
             <li class="nav-item">
               <a class="nav-link text-dark" href="/contact">contact</a>
             </li>
-						<li class="nav-item">
-							<a class="nav-link text-dark" href="/about">About</a>
-						</li>
+			
           </ul>
         </div>
       </div>
@@ -52,28 +52,66 @@
   </header>
   <!-- /header -->
 
-  <!-- contact -->
-  <section class="section">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <h2 class="section-title text-primary">Got Any Questions</h2>
-          <p>Visit Our WebSite <a href="https://insti.csir.org.gh/">CSIR-INSTI</a>.</p>
+ 	<!-- topics -->
+	<section class="section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-12 text-center">
+					<h2 class="section-title">CONTACT US </h2>
 
-          <form action="#">
-            <input type="text" id="name" name="name" placeholder="Name" class="form-control mb-4 shadow rounded-0">
-            <input type="email" id="mail" name="mail" placeholder="Email" class="form-control mb-4 shadow rounded-0">
-            <input type="text" id="subject" name="subject" placeholder="subject"
-              class="form-control mb-4 shadow rounded-0">
-            <textarea name="message" id="message" placeholder="Message"
-              class="form-control mb-4 shadow rounded-0"></textarea>
-            <button type="submit" value="send" class="btn btn-primary">Send</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- /contact -->
+					
+
+<link rel="stylesheet" href="<?= base_url('assets/styles.css') ?>">
+				</div>
+
+<link rel="stylesheet" href="<?= base_url('assets/styles.css') ?>">
+				<!-- topic-item -->
+				<div class="col-lg-4 col-sm-6 mb-4">
+					<a href="" class="px-4 py-5 bg-white shadow text-center d-block match-height">
+						<i class="ti-location-pin icon text-primary d-block mb-4"></i>
+						<h3 class="mb-3 mt-0">Address</h3>
+						<p class="mb-0">Augustino Neto Rd. Council</p>
+            <p class="mb-0">Close, Airport Residential Area</p>
+					</a>
+				</div>
+			
+				<div class="col-lg-4 col-sm-6 mb-4">
+					<a href="" class="px-4 py-5 bg-white shadow text-center d-block match-height">
+						<i class="ti-mobile icon text-primary d-block mb-4"></i>
+						<h3 class="mb-3 mt-0">Phone</h3>
+						<p class="mb-0"> +233 0302 780 709</p>
+					</a>
+				</div>
+				<div class="col-lg-4 col-sm-6 mb-4">
+					<a href="" class="px-4 py-5 bg-white shadow text-center d-block match-height">
+						<i class="ti-email icon text-primary d-block mb-4"></i>
+						<h3 class="mb-3 mt-0">Email</h3>
+						<p class="mb-0">insti@csir.org.gh</p>
+					</a>
+				</div>
+				<div class="col-lg-4 col-sm-6 mb-4">
+			
+				</div>
+			</div>
+		</div>
+	</section>
+
+  	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="section px-3 bg-white shadow text-center">
+						<h4 class="mb-4">If you have any question
+please do not hesitate to send us a message, call or come right up to our doorstep.</h4>
+						<p  class="mb-4"> You can read more about  us on our website 
+	               </p><p>Visit Our WebSite <a href="https://insti.csir.org.gh/">CSIR-INSTI</a>.</p>
+
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
   <!-- footer -->
   <footer class="section pb-4">

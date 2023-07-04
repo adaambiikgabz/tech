@@ -36,8 +36,10 @@
 <body>
   <!-- header -->
   <header class="shadow-bottom sticky-top bg-white">
-    <nav class="navbar navbar-expand-md navbar-light">
-    <img src="images/csirlogo.png" alt="CSIR Logo">
+  <nav class="navbar navbar-expand-md navbar-dark">
+  <a class="navbar-brand" href="/">
+    <img src="images/csirlogo.png" alt="CSIR Logo" style="width: 120px; height: auto;">
+  </a>
       <div class="container">
         <a class="navbar-brand px-2" href="index.html"></a>
         <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation"
@@ -76,16 +78,16 @@
         <div class="col-lg-3">
           <div class="sidebar">
             <ul class="list-styled">
-              <a class="back-btn" href="index.html"></a>
+              <a class="back-btn" href="/"></a>
               <li class="sidelist">
                 <a href="">Technologies</a>
                 <ul>
                   <li class="sidelist active">
                     <a href="/maincropvarieties">Crop Varieties</a>
                   </li>
-                  <li class="sidelist">
+                  <!--<li class="sidelist">
                     <a href="/mainagroinputs">Agro Inputs</a>
-                  </li>
+                  </li>-->
                   <li class="sidelist">
                     <a href="/mainmarketable">Marketable Technologies</a>
                   </li>
@@ -129,38 +131,23 @@ $(document).ready( function () {
       <thead>
       <tr>
         <th>Technology</th>
-        <th>Categories</th>
         <th>Year</th>
-        <!--<th>Attributes</th>
-        <th>Seedcolor</th>
-        <th>Maturity_in_days</th>
-        <th>Potential_yield</th>
-        <th>Applicability</th>
-        <th>Benefits</th>-->
+        <th>Attributes</th> 
         <th>Contact</th>
         <th>Telephone</th>
-        <!--<th>Email</th>
-        <th>WebsiteFax</th>-->
-        <!-- Add other relevant table headers -->
+      
       </tr>
     </thead>
     <tbody>
     <?php foreach ($searchResults as $result) : ?>
   <tr>
     <td><?php echo $result->Technology; ?></td>
-    <td><?php echo $result->Categories; ?></td>
     <td><?php echo $result->Year; ?></td>
-    <!--<td><?php echo $result->Attributes; ?></td>
-    <td><?php echo $result->Seedcolour; ?></td>
-    <td><?php echo $result->Maturity_in_days; ?></td>
-    <td><?php echo $result->Potential_yield; ?></td>
-    <td><?php echo $result->Applicability; ?></td>
-    <td><?php echo $result->Benefits; ?></td>-->
+    <td><?php echo $result->Attributes; ?></td>
     <td><?php echo $result->Contact; ?></td>
     <td><?php echo $result->Telephone; ?></td>
-    <!--<td><?php echo $result->Email; ?></td>
-    <td><?php echo $result->WebsiteFax; ?></td>-->
-    <!-- Add other relevant table data fields -->
+   
+
   </tr>
 <?php endforeach; ?>
 

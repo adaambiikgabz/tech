@@ -202,13 +202,13 @@ text-align: center !important;
   a:focus {
     color: var(--primary-color)
   }
-  
+/*  
   a,
   button,
   select {
     cursor: pointer;
     transition: .2s ease
-  }
+  }*/
   
   a:focus,
   button:focus,
@@ -1006,7 +1006,7 @@ body{
   width: 500px;
   background: #fff;
   border-radius: 30px;
-  height: 35px;
+  height: 40px;
   display: flex;
   padding: 5px;
   box-shadow: 0 8px 6px -10px #b3c6ff;

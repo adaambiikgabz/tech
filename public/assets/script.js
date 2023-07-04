@@ -60,6 +60,3 @@
   }
 });
 
-  <script> 
-        $('#example').DataTable();
-</script>

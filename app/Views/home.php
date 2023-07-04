@@ -32,8 +32,10 @@
 	<header class="banner overlay bg-cover" data-background="images/banner.jpg">
 	
 
-		<nav class="navbar navbar-expand-md navbar-dark">
-			<img src="images/csirlogo.png" alt="CSIR Logo" style="width: 120px; height: auto;">
+	<nav class="navbar navbar-expand-md navbar-dark">
+  <a class="navbar-brand" href="/">
+    <img src="images/csirlogo.png" alt="CSIR Logo" style="width: 120px; height: auto;">
+  </a>
 
 			<div class="container">
 				<a class="navbar-brand px-2" href="index.html"></a>
@@ -53,13 +55,7 @@
 						<li class="nav-item">
 							<a class="nav-link text-dark" href="/contact">contact</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link text-dark" href="/about">ABOUT</a>
-
-							
-						</li>
-
-						
+										
 					</ul>
 
 					
@@ -80,15 +76,7 @@
   <div class="wrapper">
     <div class="search_box">
       <div class="dropdown">
-        <!--<div class="default_option">All</div>
-        <ul>-->
-          <!--<li>All</li>
-          <li>Crop Variety</li>
-          <li>Agro Inputs</li>
-          <li>Marketable Tech</li>
-          <li>Processed Foods</li>
-          <li>Other Tech</li>
-        </ul>-->
+     
       </div>
       <div class="search_field">
         <input type="text" class="input" placeholder="Search" name="query">
@@ -144,13 +132,7 @@
 						<p class="mb-0">Find information about different types of crops and their seasons</p>
 					</a>
 				</div>
-				<div class="col-lg-4 col-sm-6 mb-4">
-					<a href="/mainagroinputs" class="px-4 py-5 bg-white shadow text-center d-block match-height">
-						<i class="ti-panel icon text-primary d-block mb-4"></i>
-						<h3 class="mb-3 mt-0">Agro Inputs</h3>
-						<p class="mb-0">Find information about different types of Agro Inputs like fertilizer among others </p>
-					</a>
-				</div>
+			
 				<div class="col-lg-4 col-sm-6 mb-4">
 					<a href="/mainmarketable" class="px-4 py-5 bg-white shadow text-center d-block match-height">
 						<i class="ti-panel icon text-primary d-block mb-4"></i>

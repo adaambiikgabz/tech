@@ -6,6 +6,7 @@ use CodeIgniter\Database\RawSql;
 use CodeIgniter\Controller;
 use App\Models\SearchModel;
 use App\Models\UserModel;
+use monken\TablesIgniter;
 
 class Users extends BaseController
 {
@@ -435,62 +436,61 @@ class Users extends BaseController
    
 
 
+public function login()
+{
+    helper(['form', 'url']);
 
-    public function login()
-    {
+
+    if ($this->request->getMethod() === 'post') {
+        //print_r($this->request->getPost());
         $data = [];
-        helper(['form']);
-        if ($this->request->getMethod() == 'post') {
-            //let's do the validation here
-            $rules = [
-                'email' => 'required|min_length[6]|max_length[50]|valid_email',
-                'password' => 'required|min_length[8]|max_length[255]|validateUser[email,password]', 
-            ];
-                     
-            $errors = [
-                'password' => [
-                    'validateUser' => 'Email or Password don\'t match' 
-                ]
-            ];
-            
-            if(! $this->validate($rules, $errors)){
-                $data['validation']= $this->validator;
-            } else {
-                $model = new UserModel();
-    
-                $user= $model->where('email', $this->request->getvar('email'))
-                             ->first();    
-                             
-                             
-                $this->setUserSession($user);
-    
+
+        $validationRules = [
+            'email' => 'required',
+            'password' => 'required'
+        ];
+
+        if ($this->validate($validationRules)) {
+            $email = $this->request->getPost('email');
+            $password = $this->request->getPost('password');
+
+            $user_model = new UserModel();
+            $result = $user_model->getLogin($email);
+
+            if (!empty($result) && password_verify($password, $result->password)) {
                 $session = session();
-                 $session->setFlashdata('success','Successfully Logged In');
-                 return redirect()->to(route_to('dashboard'));
-
+                $userdata = [
+                    'username' => $result->username,
+                    'fullname' => $result->fullname,
+                    'email' => $result->fullname,
+                    'logged_in' => true,
+                    'role' => $result->Role
+                ];
+                $session->set($userdata);
+                print_r($userdata); // Debug output
+                return redirect()->to('/dashboard');
+            } else {
+                $session = session();
+                $session->setFlashdata('p_error', 'Wrong Email or Password');
+                $session->markAsFlashdata('p_error');
+                
             }
-      
+        } else {
+            $data['validation'] = $this->validator;
         }
-    
-        echo view('templates/header', $data);
-        echo view('login', $data);
-        echo view('templates/footer', $data);
+    } else {
+           $data = ['email' => '', 'password' => ''];
+    }
 
-    }    
+    echo view('templates/header', $data);
+    echo view('login', $data);
+    echo view('templates/footer', $data);
+}
+  
+   
     
         
-     private function setUserSession($user) {
-        $data = [
-            'id'=> $user['id'],
-            'username'=> $user['username'],
-            'fullname'=> $user['fullname'],
-            'email'=> $user['email'],
-            'isLoggedIn'=> true,
-        ];
-        session()->set($data);
-        return true;
-    }
-    
+ 
         
   
     
@@ -541,15 +541,54 @@ class Users extends BaseController
         
     }
 
-
    
-    
-    
-    
-    
-    
+public function viewcrop()
+{
 
-    
+    $cropData = new UserModel();
+    $data = [
+       'page_tittle' => 'cropVarieties',
+       'cropdatas' => $cropData->getAllCrop()
+
+    ];
+    return view('maincropvarieties', $data);
+}
+
+public function viewprocessed()
+{
+
+    $processedData = new UserModel();
+    $data = [
+       'page_tittle' => 'processedfoods',
+       'processeddatas' => $processedData->getAllProcessed()
+
+    ];
+    return view('mainprocessedfoods', $data);
+}
+
+public function viewother()
+{
+
+    $otherData = new UserModel();
+    $data = [
+       'page_tittle' => 'othertechnologies',
+       'otherdatas' => $otherData->getAllOther()
+
+    ];
+    return view('mainothertechnologies', $data);
+}
+
+public function viewmarket()
+{
+
+    $marketData = new UserModel();
+    $data = [
+       'page_tittle' => 'marketabletechnologies',
+       'marketdatas' => $marketData->getAllMarket()
+
+    ];
+    return view('mainmarketable', $data);
+}
     
 }
  
