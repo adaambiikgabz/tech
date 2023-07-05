@@ -16,57 +16,10 @@ class UserModel extends Model{
     
 
 
-    protected function beforeInsert(array $data){
-
-        $data = $this->passwordHash($data);
-
-        return $data;
-    }
-
-     protected function beforeUpdate(array $data){
-
-        $data = $this->passwordHash($data);
-        return $data;
-    }
-
-    protected function passwordHash(array $data){
-        if(isset($data['data']['password']))
-    
-        $data['data']['password'] = password_hash($data['data']['password'], PASSWORD_DEFAULT);
-
-        return $data;
-    }
-
-    public function register($username)
+ 
+    public function insertdata($data)
     {
-        $builder = $db->table('users');
-      
-
-    }
-
-       // Function used during signup/registration, as the name suggests
-       public function insertdata($data)
-       {
-          
-           if ($this->db->table('users')->insert($data))
-           {
-               return true;
-           }
-          
-       }
-
-      
-
-      
-
-
-
-    protected function hashPassword(array $data)
-    {
-        if (isset($data['password'])) {
-            $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-        }
-      return $data;
+        return $this->db->table($this->table)->insert($data);
     }
 
 

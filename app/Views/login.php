@@ -10,6 +10,12 @@
                     </div>
                 <?php endif; ?>
 
+                  <?php if (session()->getFlashdata('p_error')): ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?= session()->getFlashdata('p_error') ?>
+                    </div>
+                <?php endif; ?>
+
                 <form class="" action="/login" method="post">
                     <div class="form-group">
                         <label for="email">Email address</label>

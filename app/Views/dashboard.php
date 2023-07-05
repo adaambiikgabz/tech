@@ -33,7 +33,9 @@
 	
 
 		<nav class="navbar navbar-expand-md navbar-dark">
-			<img src="images/csirlogo.png" alt="CSIR Logo">
+  <a class="navbar-brand" href="/">
+    <img src="images/csirlogo.png" alt="CSIR Logo" style="width: 120px; height: auto;">
+  </a>
 			<div class="container">
 				<a class="navbar-brand px-2" href="index.html"></a>
 				<button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation"
@@ -49,12 +51,13 @@
 						<li class="nav-item">
 							<a class="nav-link text-dark" href="/dashboard">DASHBOARD</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link text-dark" href="/login">LOG IN</a>
-						</li>
-						<li class="nav-item">
+							<li class="nav-item">
 							<a class="nav-link text-dark" href="/register">REGISTER</a>
 						</li>
+						<li class="nav-item">
+							<a class="nav-link text-dark" href="/">LOG OUT</a>
+						</li>
+					
 					</ul>
 				</div>
 			</div>

@@ -37,6 +37,18 @@
                 <input type="password" class="form-control" name="password_confirm" id="password_confirm" value="">
               </div>
               </div>
+               <div class="col-12">
+               <div class="form-group">
+                <label>Captcha</label>
+               </div>
+               </div>
+
+                   <div class="col-12">
+                 <div class="form-group">
+                <label for="captcha">Enter captcha text</label>
+                <input type="text" class="form-control" name="captcha" id="captcha">
+                </div>
+                </div>
               <?php if (isset($validation)): ?>
                 <div class="col-12">
                   <div class="alert alert-danger" role="alert">

@@ -438,10 +438,13 @@ class Users extends BaseController
 
 public function login()
 {
+ 
+    $request = request();
     helper(['form', 'url']);
 
 
-    if ($this->request->getMethod() === 'post') {
+    if ($request->is('post')) 
+    {
         //print_r($this->request->getPost());
         $data = [];
 
@@ -450,62 +453,70 @@ public function login()
             'password' => 'required'
         ];
 
+
         if ($this->validate($validationRules)) {
-            $email = $this->request->getPost('email');
-            $password = $this->request->getPost('password');
+            $email = $request->getPost('email');
+            $password = $request->getPost("password");
+         
+            
 
             $user_model = new UserModel();
             $result = $user_model->getLogin($email);
+            //dd($result);
 
-            if (!empty($result) && password_verify($password, $result->password)) {
-                $session = session();
-                $userdata = [
-                    'username' => $result->username,
-                    'fullname' => $result->fullname,
-                    'email' => $result->fullname,
-                    'logged_in' => true,
-                    'role' => $result->Role
-                ];
-                $session->set($userdata);
-                print_r($userdata); // Debug output
+            if ((!empty($result)) && (password_verify($password,$result->password)) ) 
+            {
+                //$session = session();
+                //$userdata = [
+                //    'username' => $result->username,
+                //    'fullname' => $result->fullname,
+                //    'email' => $result->fullname,
+                //    'logged_in' => true,
+                //];
+                //$session->set($userdata);
+                //dd($userdata); // Debug output
                 return redirect()->to('/dashboard');
-            } else {
+            } 
+            else 
+            {
+                //dd($result);
                 $session = session();
                 $session->setFlashdata('p_error', 'Wrong Email or Password');
                 $session->markAsFlashdata('p_error');
+                //TODO function to show errors or success
+
+                return redirect()->back();
                 
             }
-        } else {
+
+        } 
+        else 
+        {
             $data['validation'] = $this->validator;
         }
-    } else {
-           $data = ['email' => '', 'password' => ''];
+    } 
+    else 
+    {
+        //   $data = ['email' => '', 'password' => ''];
+    echo view('templates/header');
+    echo view('login');
+    echo view('templates/footer');
     }
 
-    echo view('templates/header', $data);
-    echo view('login', $data);
-    echo view('templates/footer', $data);
+   
 }
   
    
     
-        
- 
-        
-  
-    
-     public function register()
+
+    public function register()
     {
         $data = [];
         helper(['form']);
-    
+
         $model = new UserModel();
         $data['users'] = $model->getAll();
-        // print_r($data);
 
-        //encrypt password before db insertion
-        $password = $this->request->getPost('password');
-    
         if ($this->request->getMethod() == 'post') {
             // Let's do the validation here
             $rules = [
@@ -515,31 +526,43 @@ public function login()
                 'password' => 'required',
                 'password_confirm' => 'matches[password]',
             ];
-    
+
             if (! $this->validate($rules)) {
                 $data['validation'] = $this->validator;
             } else {
-              $model = new UserModel();
+                $model = new UserModel();
 
-              $newData = [
-                'username' => $this->request->getVar('username'),
-                'fullname' => $this->request->getVar('fullname'),
-                'email' => $this->request->getVar('email'),
-                'password' => $this->request->getVar('password'),
-              ];
-              $model->save($newData);
-              $session = session();
-              $session->setFlashdata('success', 'Successful Registration');
-              return redirect()->to('/login');
+                $newData = [
+                    'username' => $this->request->getVar('username'),
+                    'fullname' => $this->request->getVar('fullname'),
+                    'email' => $this->request->getVar('email'),
+                    'password' => $this->hashPassword($this->request->getVar('password')),
+                ];
+
+                $model->insertdata($newData);
+
+                $session = session();
+                $session->setFlashdata('success', 'Successful Registration');
+                return redirect()->to('/login');
             }
         }
-    
+
         echo view('templates/header', $data);
         echo view('register', $data);
         echo view('templates/footer', $data);
-
-        
     }
+
+    protected function hashPassword($password)
+    {
+        return password_hash($password, PASSWORD_DEFAULT);
+    }
+
+       
+ 
+        
+  
+    
+   
 
    
 public function viewcrop()
