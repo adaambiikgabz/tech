@@ -27,6 +27,7 @@ class Validation extends BaseConfig
         FileRules::class,
         CreditCardRules::class,
         \App\validation\UserRules::class,
+           \App\Validation\RecaptchaRules::class,
     ];
 
     /**

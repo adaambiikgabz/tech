@@ -60,3 +60,67 @@
    </div>
   </div>
 </div>
+
+
+
+
+
+
+Site key= 6Le8pv0mAAAAAC-_n8jECjKN0hLYGU7us5Ono5Cs
+
+Secret key = 6Le8pv0mAAAAAECGL5lfPq-AXJeu7cLrtVff-KGD
+
+  public function register()
+    {
+        $data = [];
+        helper(['form']);
+
+        $model = new UserModel();
+        $data['users'] = $model->getAll();
+
+        if ($this->request->getMethod() == 'post') {
+            // Let's do the validation here
+            $rules = [
+                'username' => 'required',
+                'fullname' => 'required',
+                'email' => 'required|min_length[6]|max_length[50]|valid_email|is_unique[users.email]',
+                'password' => 'required',
+                'password_confirm' => 'matches[password]',
+            ];
+
+            if (! $this->validate($rules)) {
+                $data['validation'] = $this->validator;
+            } else {
+                $model = new UserModel();
+
+                $newData = [
+                    'username' => $this->request->getVar('username'),
+                    'fullname' => $this->request->getVar('fullname'),
+                    'email' => $this->request->getVar('email'),
+                    'password' => $this->hashPassword($this->request->getVar('password')),
+                ];
+
+                $model->insertdata($newData);
+
+                $session = session();
+                $session->setFlashdata('success', 'Successful Registration');
+                return redirect()->to('/login');
+            }
+        }
+
+        echo view('templates/header', $data);
+        echo view('register', $data);
+        echo view('templates/footer', $data);
+    }
+
+    protected function hashPassword($password)
+    {
+        return password_hash($password, PASSWORD_DEFAULT);
+    }
+
+
+
+
+
+
+    

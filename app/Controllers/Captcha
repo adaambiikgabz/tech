@@ -1,0 +1,112 @@
+<?php
+
+
+namespace App\Controllers;
+
+use CodeIgniter\Database\RawSql;
+use CodeIgniter\Controller;
+use App\Models\SearchModel;
+use App\Models\UserModel;
+use monken\TablesIgniter;
+defined('BASEPATH') OR exit('No direct scriptaccess allowed');
+
+
+
+class Users extends CI_Controller
+{
+   
+
+    public function __construct()
+    {
+       parent::_construct();
+       $this->load->library('session');
+       $this->load->model('CaptchaModel');
+    }
+
+     function index()
+    {
+        $this->load->view('register');
+    }
+
+    function validate()
+    {
+        $captcha_response = trim($this->input->post('g-recaptcha-response'));
+
+        if ($captcha_response !='')
+        {
+            $keySecret='6Le8pv0mAAAAAECGL5lfPq-AXJeu7cLrtVff-KGD';
+
+            $check = array
+            (
+                 'secret' => $keySecret,
+                 'response'=> $this->input->post('g-recaptcha-response')
+
+
+            );
+
+            $startProcess = curl_init();
+            curl_setopt($startProcess, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify");
+
+             curl_setopt($startProcess, CURLOPT_URL, true);
+
+             curl_setopt($startProcess, CURLOPT_POSTFIELDS, http_build_query($check));
+
+              curl_setopt($startProcess, CURLOPT_SSL_VERIFYPEER, false);
+
+               curl_setopt($startProcess, CURLOPT_RETURNTRANSFER, true);
+
+            $receiveData = curl_exec($startProcess);
+
+            $finalResponse = json_decode($receiveData, true);
+
+            if($finalResponse['sucess'])
+            {
+               $storeData = araay
+               (
+                 'username' => $this->input->post('username'),
+
+                 'fullname' => $this->input->post('fullname'),
+
+                 'email'  => $this->input-post('email'),
+
+                 'password' => $this->input->post('password')
+
+
+               );
+            }
+            else
+            {
+               $this->session->set_flashdata('message','Validation Fail Try Again');
+
+               redirect('/register');
+            }
+        }
+        else
+        {
+            $this->session->set_flashdata('message','Validation Fail Try Again');
+
+            redirect('/register');
+        }
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+?>

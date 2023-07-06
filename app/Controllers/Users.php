@@ -7,6 +7,9 @@ use CodeIgniter\Controller;
 use App\Models\SearchModel;
 use App\Models\UserModel;
 use monken\TablesIgniter;
+use ReCaptcha\ReCaptcha;
+use Config\Services;
+
 
 class Users extends BaseController
 {
@@ -17,6 +20,8 @@ class Users extends BaseController
     {
         $this->UserModel = new UserModel();
         $this->searchModel = new SearchModel();
+
+        
     }
 
     public function index()
@@ -507,55 +512,84 @@ public function login()
 }
   
    
-    
 
-    public function register()
-    {
-        $data = [];
-        helper(['form']);
+public function register()
+{
+    $data = [];
+    helper(['form']);
 
-        $model = new UserModel();
-        $data['users'] = $model->getAll();
+    // Load the RecaptchaRules class
+    helper('recaptcharules');
 
-        if ($this->request->getMethod() == 'post') {
-            // Let's do the validation here
-            $rules = [
-                'username' => 'required',
-                'fullname' => 'required',
-                'email' => 'required|min_length[6]|max_length[50]|valid_email|is_unique[users.email]',
-                'password' => 'required',
-                'password_confirm' => 'matches[password]',
+    if ($this->request->getMethod() == 'post') {
+        // Define the validation rules
+        $rules = [
+            'username' => 'required',
+            'fullname' => 'required',
+            'email' => 'required|min_length[6]|max_length[50]|valid_email|is_unique[users.email]',
+            'password' => 'required',
+            'password_confirm' => 'matches[password]',
+            'g-recaptcha-response' => 'validateRecaptcha', // Add the custom validation rule for reCAPTCHA
+        ];
+
+        // Set the custom error messages for the reCAPTCHA validation rule
+        $errors = [
+            'g-recaptcha-response' => [
+                'validateRecaptcha' => 'Please complete the reCAPTCHA verification.',
+            ],
+        ];
+
+        if ($this->validate($rules, $errors)) {
+            // Validation passed, proceed with registration logic
+
+            // Create a new instance of the UserModel
+            $model = new UserModel();
+
+            // Prepare the data for insertion
+            $newData = [
+                'username' => $this->request->getVar('username'),
+                'fullname' => $this->request->getVar('fullname'),
+                'email' => $this->request->getVar('email'),
+                'password' => $this->passwordHash($this->request->getVar('password')), // Hash the password
             ];
 
-            if (! $this->validate($rules)) {
-                $data['validation'] = $this->validator;
-            } else {
-                $model = new UserModel();
+            // Insert the data into the database
+            $model->insertdata($newData);
 
-                $newData = [
-                    'username' => $this->request->getVar('username'),
-                    'fullname' => $this->request->getVar('fullname'),
-                    'email' => $this->request->getVar('email'),
-                    'password' => $this->hashPassword($this->request->getVar('password')),
-                ];
-
-                $model->insertdata($newData);
-
-                $session = session();
-                $session->setFlashdata('success', 'Successful Registration');
-                return redirect()->to('/login');
-            }
+            $session = session();
+            $session->setFlashdata('success', 'Successful Registration');
+            return redirect()->to('/login');
+        } else {
+            $data['validation'] = $this->validator;
         }
-
-        echo view('templates/header', $data);
-        echo view('register', $data);
-        echo view('templates/footer', $data);
     }
 
-    protected function hashPassword($password)
-    {
-        return password_hash($password, PASSWORD_DEFAULT);
-    }
+    echo view('templates/header', $data);
+    echo view('register', $data);
+    echo view('templates/footer', $data);
+}
+
+// Hash the password
+protected function passwordHash($password)
+{
+    return password_hash($password, PASSWORD_DEFAULT);
+}
+
+
+
+
+private function validateRecaptcha($response, $secretKey)
+{
+    $recaptcha = new ReCaptcha($secretKey);
+    $result = $recaptcha->verify($response, $_SERVER['REMOTE_ADDR']);
+
+    return [
+        'success' => $result->isSuccess(),
+        'error' => $result->getErrorCodes(),
+    ];
+}
+
+
 
        
  

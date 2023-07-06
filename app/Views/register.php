@@ -1,4 +1,13 @@
+<html>
+<head>
+ 
 
+  <script src="https://ajax.ggoogleapis.com/ajax/libs/jquery/2.2.0/jquery.minjs"></script>
+  <link rel="stylesheet" href="https//maxcdn.bootsrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.minjs"></script>
+  <script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+<body>
 <div class="container">
     <div class="row">
       <div class="col-12 col-sm8-offset-sm-2 col-md-6 offset-md-3 mt-5 pt-3 pb-3 bg-white from-wrapper">
@@ -39,16 +48,11 @@
               </div>
                <div class="col-12">
                <div class="form-group">
-                <label>Captcha</label>
+                <div class="g-recaptcha" data-sitekey="6Le8pv0mAAAAAC-_n8jECjKN0hLYGU7us5Ono5Cs"></div>
                </div>
                </div>
 
-                   <div class="col-12">
-                 <div class="form-group">
-                <label for="captcha">Enter captcha text</label>
-                <input type="text" class="form-control" name="captcha" id="captcha">
-                </div>
-                </div>
+               
               <?php if (isset($validation)): ?>
                 <div class="col-12">
                   <div class="alert alert-danger" role="alert">
@@ -72,3 +76,5 @@
    </div>
   </div>
 </div>
+</body>
+</html>

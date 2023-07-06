@@ -70,7 +70,7 @@
 			<div class="row">
 				<div class="col-lg-8 text-center mx-auto">
 					<h1 class="text-white mb-3">CSIR TECHNOLOGIES</h1>
-					<p class="text-white mb-4">Find advice and answers from  our Research Scientist  or get in touch</p>
+					<p class="text-white mb-4">Find advice and answers from  our Research Scientists</p>
 					<div class="position-relative">
 						<form method="get" action="/search">
   <div class="wrapper">

@@ -45,6 +45,8 @@ class Autoload extends AutoloadConfig
     public $psr4 = [
         APP_NAMESPACE => APPPATH, // For custom app namespace
         'Config'      => APPPATH . 'Config',
+           'App'         => APPPATH,                // <--- Add this line
+    'App\Validation\\' => APPPATH . 'Validation', // <--- Add this line
     ];
 
     /**
