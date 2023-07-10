@@ -52,7 +52,7 @@
   </header>
   <!-- /header -->
 
- 	<!-- topics -->
+
 	<section class="section">
 		<div class="container">
 			<div class="row justify-content-center">
@@ -65,7 +65,7 @@
 				</div>
 
 <link rel="stylesheet" href="<?= base_url('assets/styles.css') ?>">
-				<!-- topic-item -->
+			
 				<div class="col-lg-4 col-sm-6 mb-4">
 					<a href="" class="px-4 py-5 bg-white shadow text-center d-block match-height">
 						<i class="ti-location-pin icon text-primary d-block mb-4"></i>

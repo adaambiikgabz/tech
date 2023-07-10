@@ -62,7 +62,7 @@
 				</div>
 			</div>
 		</nav>
-		<!-- banner -->
+	
 		<div class="container section">
 
 <link rel="stylesheet" href="<?= base_url('assets/styles.css') ?>">
@@ -74,11 +74,10 @@
 				</div>
 			</div>
 		</div>
-		<!-- /banner -->
+	
 	</header>
-	<!-- /header -->
 
-	<!-- topics -->
+
 	<section class="section">
 		<div class="container">
 			<div class="row justify-content-center">
@@ -128,9 +127,7 @@
 			</div>
 		</div>
 	</section>
-	<!-- /topics -->
 
-	<!-- call to action -->
 	<section>
 		<div class="container">
 			<div class="row">
@@ -144,7 +141,7 @@
 			</div>
 		</div>
 	</section>
-	<!-- /call to action -->
+
 
 	<!-- footer -->
 	<footer class="section pb-4">

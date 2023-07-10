@@ -8,7 +8,7 @@ use Config\Database;
 class UserModel extends Model{
     protected $table = 'users';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['Categories','fullname','email','password',];
+    protected $allowedFields = ['username','fullname','email','password',];
     protected $beforeInsert = ['beforeInsert'];
     protected $beforeUpdate = ['beforeUpdate'];
 
@@ -16,14 +16,14 @@ class UserModel extends Model{
     
 
 
- 
+    //insert data into user table here (registration)
     public function insertdata($data)
     {
         return $this->db->table($this->table)->insert($data);
     }
 
 
-
+// get information from User table for login process
 public function getAll()
 {
 
@@ -34,6 +34,7 @@ public function getAll()
 
 }
 
+//insert data into the cropvarieties table 
 public function insertCropVariety($data)
 {
     $db = \Config\Database::connect();
@@ -41,6 +42,7 @@ public function insertCropVariety($data)
     return $builder->insert($data);
 }
 
+//insert data into the marketabletechnologies table 
 public function insertMarketableTechnologies($data)
 {
     $db = \Config\Database::connect();
@@ -48,6 +50,7 @@ public function insertMarketableTechnologies($data)
     return $builder->insert($data);
 }
 
+//insert data into the othertechnologies table 
 public function insertOtherTechnologies($data)
 {
     $db = \Config\Database::connect();
@@ -55,6 +58,7 @@ public function insertOtherTechnologies($data)
     return $builder->insert($data);
 }
 
+//insert data into the processedfoods table 
 public function insertProcessedFoods($data)
 {
     $db = \Config\Database::connect();
@@ -62,6 +66,7 @@ public function insertProcessedFoods($data)
     return $builder->insert($data);
 }
 
+//insert data into the agroinputs table 
 public function insertAgroInputs($data)
 {
     $db = \Config\Database::connect();
@@ -69,6 +74,7 @@ public function insertAgroInputs($data)
     return $builder->insert($data);
 }
 
+//Retrive data from cropvarities table to be displayed
 public function getAllCrop()
 {
    $db = db_connect();
@@ -80,6 +86,7 @@ public function getAllCrop()
 
 }
 
+//Retrive data from processedfoods table to be displayed
 public function getAllProcessed()
 {
    $db = db_connect();
@@ -91,6 +98,7 @@ public function getAllProcessed()
 
 }
 
+//Retrive data from othertechnologies table to be displayed
 public function getAllOther()
 {
    $db = db_connect();
@@ -102,6 +110,7 @@ public function getAllOther()
 
 }
 
+//Retrive data from marketabletechnologies table to be displayed
 public function getAllMarket()
 {
    $db = db_connect();
@@ -113,6 +122,7 @@ public function getAllMarket()
 
 }
 
+//Retrive data from User table for login process
 public function getLogin($email)
 {
     $db = db_connect();

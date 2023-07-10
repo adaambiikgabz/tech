@@ -24,6 +24,7 @@ class Users extends BaseController
         
     }
 
+    // Home page
     public function index()
     {
         $data['pageTittle'] = 'Home';
@@ -32,11 +33,10 @@ class Users extends BaseController
     }
 
     
-
+     // Search functionality
     public function search()
     {
-        // Retrieve search query
-        $searchQuery = $this->request->getVar('query');
+        $searchQuery = $this->request->getVar('query'); // Retrieve search query
 
         // Perform search operation using the search query
         $searchResults = $this->searchModel->searchMultipleTables($searchQuery);
@@ -49,16 +49,8 @@ class Users extends BaseController
         return view('search', $data);
     }
 
-    
-
-
-
-
-
-
+      // Dashboard page
     public function dashboard()
-
-
     {
         $data = [];
         helper(['form']);
@@ -66,20 +58,21 @@ class Users extends BaseController
         $url = route_to('dashboard');
     
         
-        // echo view('templates/header', $data);
-        return view('dashboard', ['url' => $url]);
-        // echo view('dashboard', $data);
-        // echo view('templates/footer', $data);
+       
+        return view('dashboard', ['url' => $url]); 
     }
 
+    // Crop varieties data input  page
     public function cropVarieties()
     {
         $data = [];
         helper(['form']);
         $model = new UserModel();
         $data['cropVarieties'] = $model->getAll();
-    
-        if ($this->request->getMethod() == 'post') {
+        
+        if ($this->request->getMethod() == 'post') 
+        {
+            // Get form input data
             $newData = [
                 'Technology' => $this->request->getVar('Technology'),
                 'Categories' => $this->request->getVar('Categories'),
@@ -96,11 +89,14 @@ class Users extends BaseController
                 'WebsiteFax' => $this->request->getVar('WebsiteFax'),
             ];
     
-            if ($model->insertCropVariety($newData)) {
+            if ($model->insertCropVariety($newData))
+            {
                 $session = session();
                 $session->setFlashdata('success', 'Crop variety added successfully.');
                 return redirect()->to('/cropvarieties');
-            } else {
+            }
+          else
+            {
                 $data['error'] = 'Failed to add crop variety.';
             }
         }
@@ -111,7 +107,7 @@ class Users extends BaseController
     }
     
 
-    
+     // Agro Inputs data input page
     public function agroinput()
 {
     $data = [];
@@ -119,9 +115,10 @@ class Users extends BaseController
     $model = new UserModel();
         $data['agroInputs'] = $model->getAll();
 
-    if ($this->request->getMethod() == 'post') {
+    if ($this->request->getMethod() == 'post') 
+    {
         
-
+         // Get form input data
         $newData = [
             'Shopname' => $this->request->getVar('Shopname'),
             'ProductSold' => $this->request->getVar('ProductSold'),
@@ -133,21 +130,24 @@ class Users extends BaseController
             'Implements' => $this->request->getVar('Implements'),
         ];
 
-        if ($model->insertAgroInputs($newData)) {
+        if ($model->insertAgroInputs($newData)) 
+        {
             $session = session();
             $session->setFlashdata('success', 'Agro Input added successfully.');
             return redirect()->to('/agroinputs');
-        } else {
+        }
+       else
+        {
             $data['error'] = 'Failed to add crop variety.';
         }
     }
 
-     echo view('templates/header', $data);
+    echo view('templates/header', $data);
     echo view('agroinputs', $data);
     echo view('templates/footer', $data);
 }
 
-
+    // Processed Foods data input page
     public function processedfoods()
 
 
@@ -158,7 +158,9 @@ class Users extends BaseController
         $model = new UserModel();
         $data['processedFoods'] = $model->getAll();
     
-        if ($this->request->getMethod() == 'post') {
+        if ($this->request->getMethod() == 'post') 
+        {
+            // Get form input data
             $newData = [
                 'Technology' => $this->request->getVar('Technology'),
                 'Year' => $this->request->getVar('Year'),
@@ -171,11 +173,14 @@ class Users extends BaseController
                 'Website' => $this->request->getVar('Website'),
             ];
     
-            if ($model->insertProcessedFoods($newData)) {
+            if ($model->insertProcessedFoods($newData)) 
+            {
                 $session = session();
                 $session->setFlashdata('success', 'Processed Foods added successfully.');
                 return redirect()->to('/processedfoods');
-            } else {
+            } 
+           else 
+            {
                 $data['error'] = 'Failed to add Processed Foods.';
             }
         }
@@ -188,6 +193,7 @@ class Users extends BaseController
         echo view('templates/footer', $data);
     }
 
+    // Marketable Technologies data input page
     public function marketableTechnologies()
 
 
@@ -198,7 +204,9 @@ class Users extends BaseController
         $data['marketableTechnologies'] = $model->getAll();
 
           
-        if ($this->request->getMethod() == 'post') {
+        if ($this->request->getMethod() == 'post')
+         {
+            // Get form input data
             $newData = [
                 'Technologies' => $this->request->getVar('Technologies'),
                 
@@ -206,11 +214,14 @@ class Users extends BaseController
                 
             ];
     
-            if ($model->insertMarketableTechnologies($newData)) {
+            if ($model->insertMarketableTechnologies($newData))
+            {
                 $session = session();
                 $session->setFlashdata('success', 'Other Technologies added successfully.');
                 return redirect()->to('/marketabletechnologies');
-            } else {
+            }
+          else
+            {
                 $data['error'] = 'Failed to add Other Technologies.';
             }
         }
@@ -223,179 +234,9 @@ class Users extends BaseController
         echo view('templates/footer', $data);
     }
 
-    public function about()
-
-
-    {
-        $data = [];
-        helper(['form']);
-       
-
-          
-     
-     
-        return view('about', $data); 
     
-        
-        // echo view('templates/header', $data);
-        // echo view('', $data);
-        // echo view('templates/footer', $data);
-    }
-
-    public function mainagroinputs()
-
-
-    {
-        $data = [];
-        helper(['form']);
-       
-
-          
-     
-     
-        return view('mainagroinputs', $data); 
-    
-        
-        // echo view('templates/header', $data);
-        // echo view('', $data);
-        // echo view('templates/footer', $data);
-    }
-
-    public function maincropvarieties()
-
-
-    {
-        $data = [];
-        helper(['form']);
-       
-
-          
-     
-     
-        return view('maincropvarieties', $data); 
-    
-        
-        // echo view('templates/header', $data);
-        // echo view('', $data);
-        // echo view('templates/footer', $data);
-    }
-
-      public function info()
-
-
-    {
-        $data = [];
-        helper(['form']);
-       
-
-          
-     
-     
-        return view('info', $data); 
-    
-        
-        // echo view('templates/header', $data);
-        // echo view('', $data);
-        // echo view('templates/footer', $data);
-    }
-
-    public function mainmarketable()
-
-
-    {
-        $data = [];
-        helper(['form']);
-       
-
-          
-     
-     
-        return view('mainmarketable', $data); 
-    
-        
-        // echo view('templates/header', $data);
-        // echo view('', $data);
-        // echo view('templates/footer', $data);
-    }
-
-    public function mainothertechnologies()
-
-
-    {
-        $data = [];
-        helper(['form']);
-       
-
-          
-     
-     
-        return view('mainothertechnologies', $data); 
-    
-        
-        // echo view('templates/header', $data);
-        // echo view('', $data);
-        // echo view('templates/footer', $data);
-    }
-
-    public function mainprocessedfoods()
-
-
-    {
-        $data = [];
-        helper(['form']);
-       
-
-          
-     
-     
-        return view('mainprocessedfoods', $data); 
-    
-        
-        // echo view('templates/header', $data);
-        // echo view('', $data);
-        // echo view('templates/footer', $data);
-    }
-
-
-    public function faq()
-
-
-    {
-        $data = [];
-        helper(['form']);
-       
-
-          
-     
-     
-        return view('faq', $data); 
-    
-        
-        // echo view('templates/header', $data);
-        // echo view('', $data);
-        // echo view('templates/footer', $data);
-    }
-
-    public function contact()
-
-
-    {
-        $data = [];
-        helper(['form']);
-       
-
-          
-     
-     
-        return view('contact', $data); 
-    
-        
-        // echo view('templates/header', $data);
-        // echo view('', $data);
-        // echo view('templates/footer', $data);
-    }
-
-    public function otherTechnologies()
+    // Other Technologies data input page
+      public function otherTechnologies()
 
 
     {
@@ -405,7 +246,9 @@ class Users extends BaseController
         $model = new UserModel();
         $data['otherTechnologies'] = $model->getAll();
     
-        if ($this->request->getMethod() == 'post') {
+        if ($this->request->getMethod() == 'post') 
+        {
+            //Get form input data
             $newData = [
                 'Technology' => $this->request->getVar('Technology'),
                 'Year' => $this->request->getVar('Year'),
@@ -424,7 +267,9 @@ class Users extends BaseController
                 $session = session();
                 $session->setFlashdata('success', 'Other Technologies added successfully.');
                 return redirect()->to('/othertechnologies');
-            } else {
+            } 
+           else
+            {
                 $data['error'] = 'Failed to add Other Technologies.';
             }
         }
@@ -437,20 +282,72 @@ class Users extends BaseController
         echo view('templates/footer', $data);
     }
 
+     // AgroInputs page
+    public function mainagroinputs()
+    {
+        $data = [];
+        helper(['form']);
+        return view('mainagroinputs', $data);  
+       
+    }
 
-   
+     // Crop varieties page
+    public function maincropvarieties()
+    {
+        $data = [];
+        helper(['form']);
+        return view('maincropvarieties', $data);   
+    }
 
+     // Marketable Technologies  page
+    public function mainmarketable()
+    {
+        $data = [];
+        helper(['form']);
+        return view('mainmarketable', $data); 
+    }
 
+     // Other Technologies page
+    public function mainothertechnologies()
+    {
+        $data = [];
+        helper(['form']);
+        return view('mainothertechnologies', $data);    
+    }
+
+     // Processed Foods page
+    public function mainprocessedfoods()
+    {
+        $data = [];
+        helper(['form']);
+        return view('mainprocessedfoods', $data); 
+    }
+
+    // Frequently asked questions page
+    public function faq()
+    {
+        $data = [];
+        helper(['form']);
+        return view('faq', $data);  
+    }
+
+    //Contact Us page 
+    public function contact()
+    {
+        $data = [];
+        helper(['form']);
+        return view('contact', $data);  
+    }
+
+// User login
 public function login()
 {
- 
     $request = request();
     helper(['form', 'url']);
 
-
     if ($request->is('post')) 
     {
-        //print_r($this->request->getPost());
+       
         $data = [];
 
         $validationRules = [
@@ -467,28 +364,20 @@ public function login()
 
             $user_model = new UserModel();
             $result = $user_model->getLogin($email);
-            //dd($result);
+           
 
             if ((!empty($result)) && (password_verify($password,$result->password)) ) 
             {
-                //$session = session();
-                //$userdata = [
-                //    'username' => $result->username,
-                //    'fullname' => $result->fullname,
-                //    'email' => $result->fullname,
-                //    'logged_in' => true,
-                //];
-                //$session->set($userdata);
-                //dd($userdata); // Debug output
+               
                 return redirect()->to('/dashboard');
             } 
             else 
             {
-                //dd($result);
+               
                 $session = session();
                 $session->setFlashdata('p_error', 'Wrong Email or Password');
                 $session->markAsFlashdata('p_error');
-                //TODO function to show errors or success
+               
 
                 return redirect()->back();
                 
@@ -502,7 +391,7 @@ public function login()
     } 
     else 
     {
-        //   $data = ['email' => '', 'password' => ''];
+        
     echo view('templates/header');
     echo view('login');
     echo view('templates/footer');
@@ -512,7 +401,7 @@ public function login()
 }
   
    
-
+  // User registration
 public function register()
 {
     $data = [];
@@ -575,9 +464,7 @@ protected function passwordHash($password)
     return password_hash($password, PASSWORD_DEFAULT);
 }
 
-
-
-
+ // Validate reCAPTCHA response
 private function validateRecaptcha($response, $secretKey)
 {
     $recaptcha = new ReCaptcha($secretKey);
@@ -588,17 +475,8 @@ private function validateRecaptcha($response, $secretKey)
         'error' => $result->getErrorCodes(),
     ];
 }
-
-
-
-       
- 
-        
   
-    
-   
-
-   
+//Display Cropvaritiy data from database    
 public function viewcrop()
 {
 
@@ -611,6 +489,7 @@ public function viewcrop()
     return view('maincropvarieties', $data);
 }
 
+//Display Processed foods data from database 
 public function viewprocessed()
 {
 
@@ -623,6 +502,7 @@ public function viewprocessed()
     return view('mainprocessedfoods', $data);
 }
 
+//Display Other Technologies data from database 
 public function viewother()
 {
 
@@ -635,6 +515,7 @@ public function viewother()
     return view('mainothertechnologies', $data);
 }
 
+//Display Marketable Technologies  data from database 
 public function viewmarket()
 {
 

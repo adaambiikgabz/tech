@@ -25,17 +25,8 @@
   <!-- Main Stylesheet -->
   <link href="assets/style.css" rel="stylesheet" media="screen" />
 
- 
-
-
-
-
-
 </head>
 <link rel="stylesheet" href="<?= base_url('assets/styles.css') ?>">
-
-
-
 <body>
   <!-- header -->
   <header class="shadow-bottom sticky-top bg-white">
@@ -48,8 +39,6 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <link rel="stylesheet" href="<?= base_url('assets/styles.css') ?>">
-
-        
        
         <div class="collapse navbar-collapse text-center" id="navigation">
           <ul class="navbar-nav ml-auto">

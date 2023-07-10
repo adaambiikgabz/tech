@@ -15,13 +15,13 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-    <label for="ProductSold">ProductSold</label>
-    <div class="input-group">
-        <input type="text" class="form-control" name="ProductSold" id="ProductSold" value="">
+                <div class="form-group">
+                      <label for="ProductSold">ProductSold</label>
+                      <div class="input-group">
+                      <input type="text" class="form-control" name="ProductSold" id="ProductSold" value="">
        
-    </div>
-</div>
+                </div>
+                </div>
 
 <div class="form-group">
                         <label for="Phone Number">Phone Number</label>

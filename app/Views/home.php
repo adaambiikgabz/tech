@@ -63,7 +63,7 @@
 				
 			</div>
 		</nav>
-		<!-- banner -->
+	
 		<div class="container section">
 
 <link rel="stylesheet" href="<?= base_url('assets/styles.css') ?>">
@@ -87,21 +87,9 @@
 </form>
 
 					<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
-
-	
-
-
-
-
-
 				</div>
 			</div>
 		</div>
-		<!-- /banner -->
-
-		
-		
-
 	</header>
 	<!-- /header -->
 	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>

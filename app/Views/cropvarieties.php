@@ -18,6 +18,8 @@
                                     <option value="Rice">Rice</option>
                                     <option value="Cowpea">Cowpea</option>
                                     <option value="Millet">Millet</option>
+                                    <option value="Millet">Soya beans</option>
+                                    <option value="Millet">Other</option>
                                 </select>
                             </div>
                         </div>

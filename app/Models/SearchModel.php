@@ -50,6 +50,7 @@ class SearchModel extends Model
                 ->groupEnd();
         }
         $query3 = $builder3->get();
+        //merge and put the results in the various tables and pass the results 
         $results = array_merge($results, $query3->getResult());
 
         return $results;
